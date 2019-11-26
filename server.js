@@ -5,7 +5,7 @@ const path = require("path");
 const axios = require("axios");
 const cheerio = require("cheerio");
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3000;
 const Users = require('./model/Users')
 
 // Remember to npm install all this after testing routes.
