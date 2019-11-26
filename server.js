@@ -6,7 +6,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const Users = require('./models/Users')
+const Users = require('./model/Users')
 
 // Remember to npm install all this after testing routes.
 
@@ -35,9 +35,10 @@ app.get("/", (req, res) => {
 // This route posts the saved books to the database.
 app.post("/add/user", function(req, res) {
     const User = new Users({
-        _id: new mongoose.Types.ObjectId(),
+        id: new mongoose.Types.ObjectId(),
         name: req.body.name,
-        info:req.body.info
+        email:req.body.email,
+        picture:req.body.picture
     });
     // save() stores the saved book to the book_search database.
     // .then() console logs the result of the operation of saving.
