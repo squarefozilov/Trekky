@@ -13,7 +13,7 @@ const Users = require('./model/Users')
 // Defining middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(express.static("client/build"));
+app.use(express.static(path.join(__dirname ,"client/build")));
 
 
 // Set up mongoose locally and for mLab.
