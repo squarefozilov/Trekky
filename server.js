@@ -23,7 +23,7 @@ mongoose.connect(MONGODB_URL, { useNewUrlParser: true });
 var db = mongoose.connection;
 db.once("open", () => {console.log('Connected')});
 db.on("error", function(err){
-    console.log(err);
+console.log(err);
 });
 
 app.get("/add/user", function(){
@@ -43,17 +43,17 @@ app.post("/add/user", function(req, res) {
         email:req.body.email,
         picture:req.body.picture
     });
-    // save() stores the saved book to the book_search database.
-    // .then() console logs the result of the operation of saving.
-    // .catch() logs any errors in the process of saving to the database.
-    User.save()
-    .then((result) => {
-        console.log(result);
-        res.json(result)
+    
+    User.save(function(err,user){
+        if (err) {console.log(err)}
+        console.log(user.name , " was just added to the database")
+        
+        Users.find({}, function(err, data){
+            if(err){console.log(err)}
+            res.json(data)
+        })
     })
-    .catch(err => {console.log(err);})
-
-    console.log("this route is still being hit!");
+    
     
 });
 
