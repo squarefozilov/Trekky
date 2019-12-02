@@ -26,11 +26,14 @@ db.on("error", function(err){
     console.log(err);
 });
 
-// This route directs the user to the homepage.
-// app.get("/", (req, res) => {
-//     res.sendFile(path.join(__dirname, "./client/project3/public/index.html"));
-    
-// });
+app.get("/add/user", function(){
+    Users.find({} ,function(err, data){
+        if(err) {console.log(err)}
+
+        console.log(data)
+        res.json(data)
+    })
+})
 
 // This route posts the saved books to the database.
 app.post("/add/user", function(req, res) {
