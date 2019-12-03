@@ -1,30 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Maps from './components/Maps';
+import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import Navbar from "./component/Navbar"
+import Home from "./component/Home"
+import Navigation from "./component/Navigation";
+import Signup from "./component/Signup";
+import Login from "./component/Login";
 
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Let's build the coolest app! We can do it.
-          API-Key: {process.env.REACT_APP_APIKEY}
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <Maps/>
-    </div>
-  );
+class App extends React.Component{
+  render(){
+    return (
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route exact path="/navigation" component={Navigation} />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={Login} />
+            {/* <Route component={NoMatch} /> */}
+          </Switch>
+        </div>
+      </Router>
+    )
+  }
 }
 
 export default App;
