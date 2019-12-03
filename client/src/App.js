@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Maps from './components/Maps';
 
+
 function App() {
   return (
     <div className="App">
@@ -10,6 +11,7 @@ function App() {
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Let's build the coolest app! We can do it.
+          API-Key: {process.env.REACT_APP_APIKEY}
         </p>
         <a
           className="App-link"

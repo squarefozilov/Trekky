@@ -2,12 +2,15 @@ import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import API from '../utils/API'
 
+// let APIkey = require('dotenv').config({path:'../../../.env'});
 // This function is to pass the .env variable to the apikey
-function keyGrab () {
-API.getApiKey()
-.then((res) => {return res.data})
-.catch((err) => {console.log(err)})
-}
+// function keyGrab () {
+// API.getApiKey()
+// .then((res) => {console.log(res)})
+// .catch((err) => {console.log(err)})
+// }
+
+// keyGrab();
 
 const mapStyles = {
     width: '80%',
@@ -33,7 +36,7 @@ class Maps extends React.Component {
         );
     };
 };
-
+// process.env.REACT_APP_APIKEY
 export default GoogleApiWrapper({
-    apiKey: keyGrab()
+    apiKey:"AIzaSyC8KSnkuC8bH6lSFKZ9bZ30__Wnrtm-KVQ"
   })(Maps);

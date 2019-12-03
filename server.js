@@ -1,4 +1,4 @@
-require('dotenv').config("./.env")
+require('dotenv').config(".env")
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -78,7 +78,7 @@ app.delete("/delete/:id", (req, res) => {
 });
 
 app.get("/apikey", (req,res) => {
-    res.json(process.env.APIkey)
+    res.json(process.env.REACT_APP_APIkey)
 });
 
 // Send every other request to the react app.
