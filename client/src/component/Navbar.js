@@ -12,6 +12,14 @@ function Navbar(){
                     <a className="nav-link">Map</a>
                 </li>
             </ul>
+            <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <a className="nav-link">Profile</a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link">Sign up</a>
+                </li>
+            </ul>
         </nav>
     );
 }

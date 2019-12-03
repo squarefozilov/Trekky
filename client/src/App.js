@@ -6,9 +6,17 @@ import Navbar from "./component/Navbar"
 class App extends React.Component{
   render(){
     return (
-      <div className="App">
-        <Navbar />
-      </div>
+      <Router>
+        <div className="App">
+          <Navbar />
+          <Switch>
+            <Route exact path="/" component="Body" />
+            <Route exact path="/map" component="Map" />
+            <Route exact path="/signup" component="Signup" />
+            <Route exact path="/login" component="Login" />
+          </Switch>
+        </div>
+      </Router>
     )
   }
 }
