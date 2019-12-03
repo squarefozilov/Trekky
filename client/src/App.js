@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Navbar from "./component/Navbar"
+import Home from "./component/Home"
+import Navigation from "./component/Navigation";
 
 class App extends React.Component{
   render(){
@@ -10,10 +12,11 @@ class App extends React.Component{
         <div className="App">
           <Navbar />
           <Switch>
-            <Route exact path="/" component="Body" />
-            <Route exact path="/map" component="Map" />
+            <Route exact path="/" component={Home} />
+            <Route exact path="/navigation" component={Navigation} />
             <Route exact path="/signup" component="Signup" />
             <Route exact path="/login" component="Login" />
+            {/* <Route component={NoMatch} /> */}
           </Switch>
         </div>
       </Router>
