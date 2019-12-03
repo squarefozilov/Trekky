@@ -4,6 +4,8 @@ import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Navbar from "./component/Navbar"
 import Home from "./component/Home"
 import Navigation from "./component/Navigation";
+import Signup from "./component/Signup";
+import Login from "./component/Login";
 
 class App extends React.Component{
   render(){
@@ -14,8 +16,8 @@ class App extends React.Component{
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/navigation" component={Navigation} />
-            <Route exact path="/signup" component="Signup" />
-            <Route exact path="/login" component="Login" />
+            <Route exact path="/signup" component={Signup} />
+            <Route exact path="/login" component={Login} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
         </div>
