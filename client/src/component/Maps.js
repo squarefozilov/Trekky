@@ -16,30 +16,33 @@ class Maps extends React.Component {
 
 
    test = () => {
-    console.log("props==> ",this.props.coor)
+    // console.log("props==> ",this.props.coor)
   }
   
 
     render(){
+
+      const x = this.props.coor.map(function(item){
+        console.log("item in variable => ", item)
         return(
+          <Marker
+          position={item}
+          />
+        )
+      })
+      return(
           
-            <div>   
+      <div>   
         <Map
          data={this.test()}
           google={this.props.google}
           zoom={8}
           style={mapStyles}
           initialCenter={{ lat: 40.7128, lng: -74.0060}}>
-        <Marker  
-        //this.props.coors
-        position={this.props.coor.forEach(function(item){
-                  console.log("item",item)
-                  return item
-                  })} 
-        /> 
+        {x}
         </Map>
       </div>
-        );
+      );
     };
 };
 // process.env.REACT_APP_APIKEY
