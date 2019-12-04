@@ -1,4 +1,4 @@
-require('dotenv').config("./.env")
+require('dotenv').config(".env")
 const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
@@ -6,7 +6,8 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const app = express();
 const PORT = process.env.PORT || 3001;
-const Users = require('./model/Users')
+const Users = require('./model/Users');
+const CrimeLocations = require ('./model/CrimeLocations');
 
 // Remember to npm install all this after testing routes.
 
@@ -78,7 +79,7 @@ app.delete("/delete/:id", (req, res) => {
 });
 
 app.get("/apikey", (req,res) => {
-    res.json(process.env.APIkey)
+    res.json(process.env.REACT_APP_APIkey)
 });
 
 // Send every other request to the react app.
