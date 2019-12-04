@@ -30,15 +30,21 @@ class Navigation extends React.Component{
         })  
       }
       getUsrLocale = () => {
-          let usrPosition = navigator.geolocation.getCurrentPosition();
+          let usrPosition = navigator.geolocation.getCurrentPosition(this.showPosition);
           console.log(usrPosition)
       }
+      showPosition = (position) => {
+          console.log("user Position => ",{lat:position.coords.latitude,lng:position.coords.longitude})
+        return {lat:position.coords.latitude,lng:position.coords.longitude}
+      }
+
     
-      
+    
 
     
 render(){
     return (
+        
         <div className="container">
             <br></br>
             <div className="jumbotron">
@@ -62,6 +68,7 @@ render(){
                     return {lat:item.lat, lng:item.lng}
                     })}
                     usrLocale={this.getUsrLocale}
+                    test={this.getUsrLocale()}
                 />
                 
         </div>
