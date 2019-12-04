@@ -28,7 +28,13 @@ class Navigation extends React.Component{
         this.setState({crimeLocations: testArr}, function(){
          console.log("State =>>",this.state.crimeLocations);
         })  
-    }
+      }
+      getUsrLocale = () => {
+          let usrPosition = navigator.geolocation.getCurrentPosition();
+          console.log(usrPosition)
+      }
+    
+      
 
     
 render(){
@@ -51,9 +57,11 @@ render(){
                 <History />
             </div>
                 <Maps 
+
                     coor={this.state.crimeLocations.map(function(item){
                     return {lat:item.lat, lng:item.lng}
-                })}
+                    })}
+                    usrLocale={this.getUsrLocale}
                 />
                 
         </div>
