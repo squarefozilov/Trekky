@@ -65,6 +65,31 @@ app.get("/api", (req, res) => {
     
 });
 
+app.get("/api/crime", (req, res) => {
+    axios.get("https://data.cityofnewyork.us/resource/uip8-fykc.json").then(function(response){
+
+        // console.log(response.data);
+        let results = [];
+
+        for (let i = 0; i < 10; i++){
+
+            date = response.data[i].arrest_date;
+            latitude = response.data[i].latitude;
+            longitude = response.data[i].longitude;
+
+            results.push({
+                latitude: latitude,
+                longitude: longitude
+            })
+        }
+    
+        console.log(results);
+        
+    }).catch(function(err){
+        if (err) throw err;
+    })
+})
+
 // This route deletes the saved books in the database.
 app.delete("/delete/:id", (req, res) => {
     let userId = req.params.id;
