@@ -8,7 +8,6 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const Users = require('./model/Users');
 const CrimeLocations = require ('./model/CrimeLocations');
-
 // Remember to npm install all this after testing routes.
 
 // Defining middleware
@@ -67,29 +66,43 @@ app.get("/api", (req, res) => {
 });
 
 app.get("/api/crime", (req, res) => {
+    CrimeLocations.find({}).then((result) => {
+        res.send(result);
+    })
+})
+
+app.post("/api/crime", (req, res) => {
+    const CrimeLocation = new CrimeLocations({
+        id: new mongoose.Types.ObjectId(),
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
+    })
     axios.get("https://data.cityofnewyork.us/resource/uip8-fykc.json").then(function(response){
 
         // console.log(response.data);
-        let results = [];
 
         for (let i = 0; i < 10; i++){
+            let results = {};
 
-            date = response.data[i].arrest_date;
-            latitude = response.data[i].latitude;
-            longitude = response.data[i].longitude;
+            let latitude = response.data[i].latitude;
+            let longitude = response.data[i].longitude;
 
-            results.push({
-                latitude: latitude,
-                longitude: longitude
+            results.latitude = latitude;
+            results.longitude = longitude;
+            CrimeLocations.create(results).then(function(dbCrime){
+                console.log(dbCrime);
+            }).catch(function(err){
+                console.log(err);
             })
         }
     
-        console.log(results);
+        // res.json(results);
         
     }).catch(function(err){
         if (err) throw err;
     })
 })
+
 
 // This route deletes the saved books in the database.
 app.delete("/delete/:id", (req, res) => {
