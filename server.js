@@ -3,18 +3,16 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const axios = require("axios");
-const cheerio = require("cheerio");
 const app = express();
 const PORT = process.env.PORT || 3001;
 const Users = require('./model/Users');
-const CrimeLocations = require ('./model/CrimeLocations');
-// Remember to npm install all this after testing routes.
+// const CrimeLocations = require ('./model/CrimeLocations');
+ const crimeLocationsController = require('./controllers/crimeLocationController');
 
 // Defining middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname ,"client/build")));
-
 
 // Set up mongoose locally and for mLab.
 const MONGODB_URL = "mongodb://localhost/project_db" || process.env.MONGODB_URI;
@@ -57,19 +55,7 @@ app.post("/add/user", function(req, res) {
     
 });
 
-// This route queiries all books currently saved in the books database.
-app.get("/api", (req, res) => {
-    Users.find({}).then((result) => {
-        res.send(result);
-    })
-    
-});
-
-app.get("/api/crime", (req, res) => {
-    CrimeLocations.find({}).then((result) => {
-        res.json(result);
-    })
-})
+app.get("/api/crime",crimeLocationsController.getCrimeData)
 
 app.post("/api/crime", (req, res) => {
     const CrimeLocation = new CrimeLocations({
