@@ -12,6 +12,12 @@ class Profile extends Component {
     }
   }
 
+  logOut(e) {
+    e.preventDefault()
+    localStorage.removeItem('usertoken')
+    this.props.history.push(`/`)
+  }
+
   componentDidMount() {
     const token = localStorage.usertoken
     const decoded = jwt_decode(token)
@@ -25,6 +31,9 @@ class Profile extends Component {
   render() {
     return (
       <div className="container">
+        <a href="" onClick={this.logOut.bind(this)} className="nav-link">
+            Logout
+          </a>
         <div className="jumbotron mt-5">
           <div className="col-sm-8 mx-auto">
             <h1 className="text-center">PROFILE</h1>
