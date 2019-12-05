@@ -6,6 +6,7 @@ import Home from "./component/Home"
 import Navigation from "./component/Navigation";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
+import Profile from "./signin/Profile";
 
 class App extends React.Component{
   render(){
@@ -18,6 +19,7 @@ class App extends React.Component{
             <Route exact path="/navigation" component={Navigation} />
             <Route exact path="/signup" component={Signup} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/profile" component={Profile} />
             {/* <Route component={NoMatch} /> */}
           </Switch>
         </div>
