@@ -67,7 +67,7 @@ app.get("/api", (req, res) => {
 
 app.get("/api/crime", (req, res) => {
     CrimeLocations.find({}).then((result) => {
-        res.send(result);
+        res.json(result);
     })
 })
 
