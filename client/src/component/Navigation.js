@@ -43,20 +43,30 @@ render(){
         
         <div className="container">
             <br></br>
-            <div className="jumbotron">
-                <div className="input-group">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text">From</span>
+            <div className="row">
+                <div className="jumbotron col-7">
+                    <div className="input-group">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">From</span>
+                        </div>
+                        <input type="text" className="form-control" placeholder="From.."></input>
+                    </div><br></br>
+                    <div className="input-group">
+                        <div className="input-group-prepend">
+                            <span className="input-group-text">To</span>
+                        </div>
+                        <input type="text" className="form-control" placeholder="Destination"></input>
                     </div>
-                    <input type="text" className="form-control" placeholder="From.."></input>
-                </div><br></br>
-                <div className="input-group">
-                    <div className="input-group-prepend">
-                        <span className="input-group-text">To</span>
-                    </div>
-                    <input type="text" className="form-control" placeholder="Destination"></input>
+                    <History />
                 </div>
-                <History />
+                <div className="card offset-1 col-4">
+                    <div className="card-header">
+                        News title goes here
+                    </div>
+                    <div className="card-body">
+                        News body goes here
+                    </div>
+                </div>
             </div>
                 <Maps 
                      coor={

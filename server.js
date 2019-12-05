@@ -3,21 +3,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const axios = require("axios");
-const cheerio = require("cheerio");
-const CrimeLocations = require ('./model/CrimeLocations');
 const app = express();
+const cheerio = require("cheerio");
 const PORT = process.env.PORT || 3001;
 const Users = require('./model/Users')
 const jwt = require('jsonwebtoken')
 process.env.SECRET_KEY = 'secret';
+const crimeLocationsController = require('./controllers/crimeLocationController');
 
-// Remember to npm install all this after testing routes.
 
 // Defining middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname ,"client/build")));
-
 
 // Set up mongoose locally and for mLab.
 const MONGODB_URL = "mongodb://localhost/project_db" || process.env.MONGODB_URI;
@@ -61,6 +59,7 @@ app.post("/add/user", function(req, res) {
     
     
 });
+
 
 app.post('/register', (req, res) => {
     console.log("connectin")
@@ -109,11 +108,9 @@ app.post('/login', (req, res) => {
     Users.findOne({
       email: req.body.email})
     })
-app.get("/api/crime", (req, res) => {
-    CrimeLocations.find({}).then((result) => {
-        res.json(result);
-    })
-})
+
+app.get("/api/crime",crimeLocationsController.getCrimeData)
+
 
 app.post("/api/crime", (req, res) => {
   const CrimeLocation = new CrimeLocations({
