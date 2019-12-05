@@ -1,6 +1,7 @@
-import React from "react";
 
-function Home(){
+import React, { Component } from 'react'
+class Home extends Component{
+    render(){
     return (
         <div className="wrapper">
             <div className="jumbotron">
@@ -11,6 +12,7 @@ function Home(){
             <div className="description">
                 <div className="row">
                     <div className="col-6 how-to-use">
+                        
                         Table of describing what our app does goes in here.
                     </div>
                     <div className="col-6 map-screenshot">
@@ -20,6 +22,7 @@ function Home(){
             </div>
         </div>
     )
+  }
 }
 
 export default Home;
