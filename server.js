@@ -106,7 +106,19 @@ app.get("/api", (req, res) => {
 app.post('/login', (req, res) => {
   res.send("UserAbbosjon")
     Users.findOne({
-      email: req.body.email
+      email: req.body.email})
+    })
+app.get("/api/crime", (req, res) => {
+    CrimeLocations.find({}).then((result) => {
+        res.json(result);
+    })
+})
+
+app.post("/api/crime", (req, res) => {
+    const CrimeLocation = new CrimeLocations({
+        id: new mongoose.Types.ObjectId(),
+        latitude: req.body.latitude,
+        longitude: req.body.longitude
     })
       .then(user => {
         if (user) {
