@@ -112,37 +112,7 @@ app.post('/login', (req, res) => {
 app.get("/api/crime",crimeLocationsController.getCrimeData)
 
 
-app.post("/api/crime", (req, res) => {
-  const CrimeLocation = new CrimeLocations({
-      id: new mongoose.Types.ObjectId(),
-      latitude: req.body.latitude,
-      longitude: req.body.longitude
-  })
-  axios.get("https://data.cityofnewyork.us/resource/uip8-fykc.json").then(function(response){
-
-      // console.log(response.data);
-
-      for (let i = 0; i < 10; i++){
-          let results = {};
-
-          let latitude = response.data[i].latitude;
-          let longitude = response.data[i].longitude;
-
-          results.latitude = latitude;
-          results.longitude = longitude;
-          CrimeLocations.create(results).then(function(dbCrime){
-              console.log(dbCrime);
-          }).catch(function(err){
-              console.log(err);
-          })
-      }
-  
-      // res.json(results);
-      
-  }).catch(function(err){
-      if (err) throw err;
-  })
-})
+app.post("/api/crime", crimeLocationsController.addCrimeDataToDB)
 
 
   app.get('/profile', (req, res) => {
