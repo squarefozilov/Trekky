@@ -41,3 +41,18 @@ export const getProfile = user => {
       console.log(err)
     })
 }
+
+
+export const alluser = user => {
+  return axios
+    .get('users/alluser', {
+      //headers: { Authorization: ` ${this.getToken()}` }
+    })
+    .then(response => {
+      console.log(response)
+    //  return response.data
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}

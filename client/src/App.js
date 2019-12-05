@@ -9,11 +9,11 @@ import Login from "./component/Login";
 import Profile from "./signin/Profile";
 
 class App extends React.Component{
+    
   render(){
     return (
       <Router>
         <div className="App">
-        
           <Navbar  />
           <Switch>
             <Route exact path="/" component={Home} />

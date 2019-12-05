@@ -35,6 +35,7 @@ class Register extends Component {
   }
 
   render() {
+    window.location.reload();
     return (
       <div className="container">
         <div className="row">
