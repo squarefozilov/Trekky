@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const path = require("path");
 const axios = require("axios");
 const cheerio = require("cheerio");
+const CrimeLocations = require ('./model/CrimeLocations');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const Users = require('./model/Users')
@@ -115,33 +116,36 @@ app.get("/api/crime", (req, res) => {
 })
 
 app.post("/api/crime", (req, res) => {
-    const CrimeLocation = new CrimeLocations({
-        id: new mongoose.Types.ObjectId(),
-        latitude: req.body.latitude,
-        longitude: req.body.longitude
-    })
-      .then(user => {
-        if (user) {
-            // Passwords match
-            const payload = {
-              _id: user._id,
-              first_name: user.first_name,
-              last_name: user.last_name,
-              email: user.email
-            }
-            let token = jwt.sign(payload, process.env.SECRET_KEY, {
-              expiresIn: 1440
-            })
-            res.send(token)
-          
-        } else {
-          res.json({ error: 'User does not exist' })
-        }
-      })
-      .catch(err => {
-        res.send('error: ' + err)
-      })
+  const CrimeLocation = new CrimeLocations({
+      id: new mongoose.Types.ObjectId(),
+      latitude: req.body.latitude,
+      longitude: req.body.longitude
   })
+  axios.get("https://data.cityofnewyork.us/resource/uip8-fykc.json").then(function(response){
+
+      // console.log(response.data);
+
+      for (let i = 0; i < 10; i++){
+          let results = {};
+
+          let latitude = response.data[i].latitude;
+          let longitude = response.data[i].longitude;
+
+          results.latitude = latitude;
+          results.longitude = longitude;
+          CrimeLocations.create(results).then(function(dbCrime){
+              console.log(dbCrime);
+          }).catch(function(err){
+              console.log(err);
+          })
+      }
+  
+      // res.json(results);
+      
+  }).catch(function(err){
+      if (err) throw err;
+  })
+})
 
 
   app.get('/profile', (req, res) => {
