@@ -87,4 +87,18 @@ users.get('/profile', (req, res) => {
     })
 })
 
+users.get("/alluser", function(req, res) {
+  User.find({}, function(err, data){
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(data);
+    }
+  });
+  
+});
+
+
+
+
 module.exports = users
