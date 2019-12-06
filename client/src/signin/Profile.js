@@ -11,10 +11,15 @@ class Profile extends Component {
       email: '',
       errors: {}
     }
+   
+  }
+
+  refresh(){
+    window.location.reload(false);
   }
 
   logOut(e) {
-    e.preventDefault()
+  
     localStorage.removeItem('usertoken')
     this.props.history.push(`/`)
   }
@@ -33,6 +38,7 @@ class Profile extends Component {
     
     return (
       <div className="container">
+        
         <a href="" onClick={this.logOut.bind(this)} className="nav-link">
             Logout
           </a>

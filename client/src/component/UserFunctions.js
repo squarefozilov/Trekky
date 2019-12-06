@@ -1,5 +1,8 @@
 import axios from 'axios'
-
+ const reload = func => {
+  return window.location.reload(false)
+    
+}
 export const register = newUser => {
   return axios
     .post('/register', {
@@ -14,18 +17,22 @@ export const register = newUser => {
 }
 
 export const login = user => {
+
   return axios
     .post('/login', {
       email: user.email,
       password: user.password
     })
     .then(response => {
+     
       localStorage.setItem('usertoken', response.data)
       return response.data
     })
     .catch(err => {
       console.log(err)
     })
+
+    
 }
 
 export const getProfile = user => {
@@ -34,8 +41,9 @@ export const getProfile = user => {
       //headers: { Authorization: ` ${this.getToken()}` }
     })
     .then(response => {
+      window.location.reload(false)
       console.log(response)
-      return response.data
+      return response.data  
     })
     .catch(err => {
       console.log(err)
@@ -43,16 +51,3 @@ export const getProfile = user => {
 }
 
 
-export const alluser = user => {
-  return axios
-    .get('users/alluser', {
-      //headers: { Authorization: ` ${this.getToken()}` }
-    })
-    .then(response => {
-      console.log(response)
-    //  return response.data
-    })
-    .catch(err => {
-      console.log(err)
-    })
-}

@@ -20,7 +20,7 @@ class Login extends Component {
   }
   onSubmit(e) {
     e.preventDefault()
-
+    
     const user = {
       email: this.state.email,
       password: this.state.password
@@ -29,6 +29,7 @@ class Login extends Component {
     login(user).then(res => {
       if (res) {
         this.props.history.push(`/profile`)
+        window.location.reload(false);
       }
     })
   }
