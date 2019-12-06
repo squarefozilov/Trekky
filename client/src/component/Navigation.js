@@ -2,6 +2,7 @@ import React from "react";
 import History from "./History";
 import Maps from "./Maps";
 import API from "../utils/API";
+import Newsfeed from "./Newsfeed";
 
 class Navigation extends React.Component{
     state = {
@@ -60,12 +61,7 @@ render(){
                     <History />
                 </div>
                 <div className="card offset-1 col-4">
-                    <div className="card-header">
-                        News title goes here
-                    </div>
-                    <div className="card-body">
-                        News body goes here
-                    </div>
+                    <Newsfeed />
                 </div>
             </div>
                 <Maps 
