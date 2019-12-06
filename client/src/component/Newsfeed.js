@@ -1,18 +1,18 @@
 import React from 'react';
 
-function NewsFeed(){
+function Newsfeed(props){
     return (
         <div>
             <div >
                 <div className="card-header">
-                    News title goes here
+                    {props.title}
                 </div>
                 <div className="card-body">
-                    News body goes here
+                    {props.headline}
                 </div>
             </div>
         </div>
     );
 }
 
-export default NewsFeed;
+export default Newsfeed;
