@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Newsfeed(props){
+function NewsFeed(props){
     return (
         <div>
             <div >
@@ -15,4 +15,4 @@ function Newsfeed(props){
     );
 }
 
-export default Newsfeed;
+export default NewsFeed;

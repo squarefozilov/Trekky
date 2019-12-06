@@ -1,6 +1,6 @@
 import React from "react";
 import History from "./History";
-import Newsfeed from './Newsfeed'
+import NewsFeed from './NewsFeed'
 import Maps from "./Maps";
 import Destination from './Destination'
 import API from "../utils/API";
@@ -87,7 +87,7 @@ render(){
     return (
     
         <div className="container" style={containerStyles}>
-            <Newsfeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+            <NewsFeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
                 <Container> 
                     <Row>
                        <Col>
