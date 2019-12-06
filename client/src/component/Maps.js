@@ -2,17 +2,14 @@ import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 
 const mapStyles = {
-    width: '80%',
-    height: '60%',
-    display:"block",
-    margin:"20px"
-  };
+  width: '75%',
+  height: '90%',
+  // pointerEvents:"none",
+};
 
 class Maps extends React.Component {
-  
-    render(){
 
-      
+    render(){
       // This variable holds the locations of most current crime locations.
       const crimeLocales = this.props.coor.map(function(item){
         return(
@@ -22,14 +19,14 @@ class Maps extends React.Component {
           />
         )
       })
-
       return(
         <div>   
           <Map
             google={this.props.google}
             zoom={11}
             style={mapStyles}
-            initialCenter={{lat: 40.7128, lng: -74.0060}}>
+            initialCenter={{lat: 40.7128, lng: -74.0060}}
+            >
           {crimeLocales}
           <Marker position={this.props.usrLocale} />
           </Map>

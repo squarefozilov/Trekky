@@ -3,21 +3,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const path = require("path");
 const axios = require("axios");
-const cheerio = require("cheerio");
-const CrimeLocations = require ('./model/CrimeLocations');
 const app = express();
+const cheerio = require("cheerio");
 const PORT = process.env.PORT || 3001;
 const Users = require('./model/Users')
 const jwt = require('jsonwebtoken')
 process.env.SECRET_KEY = 'secret';
+const crimeLocationsController = require('./controllers/crimeLocationController');
 
-// Remember to npm install all this after testing routes.
 
 // Defining middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(__dirname ,"client/build")));
-
 
 // Set up mongoose locally and for mLab.
 const MONGODB_URL = "mongodb://localhost/project_db" || process.env.MONGODB_URI;
@@ -61,6 +59,7 @@ app.post("/add/user", function(req, res) {
     
     
 });
+
 
 app.post('/register', (req, res) => {
     console.log("connectin")
@@ -109,43 +108,11 @@ app.post('/login', (req, res) => {
     Users.findOne({
       email: req.body.email})
     })
-app.get("/api/crime", (req, res) => {
-    CrimeLocations.find({}).then((result) => {
-        res.json(result);
-    })
-})
 
-app.post("/api/crime", (req, res) => {
-  const CrimeLocation = new CrimeLocations({
-      id: new mongoose.Types.ObjectId(),
-      latitude: req.body.latitude,
-      longitude: req.body.longitude
-  })
-  axios.get("https://data.cityofnewyork.us/resource/uip8-fykc.json").then(function(response){
+app.get("/api/crime",crimeLocationsController.getCrimeData)
 
-      // console.log(response.data);
 
-      for (let i = 0; i < 10; i++){
-          let results = {};
-
-          let latitude = response.data[i].latitude;
-          let longitude = response.data[i].longitude;
-
-          results.latitude = latitude;
-          results.longitude = longitude;
-          CrimeLocations.create(results).then(function(dbCrime){
-              console.log(dbCrime);
-          }).catch(function(err){
-              console.log(err);
-          })
-      }
-  
-      // res.json(results);
-      
-  }).catch(function(err){
-      if (err) throw err;
-  })
-})
+app.post("/api/crime", crimeLocationsController.addCrimeDataToDB)
 
 
   app.get('/profile', (req, res) => {
