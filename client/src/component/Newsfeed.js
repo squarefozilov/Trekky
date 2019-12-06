@@ -1,14 +1,14 @@
 import React from 'react';
 
-function NewsFeed(props){
+function NewsFeed(){
     return (
         <div>
             <div >
                 <div className="card-header">
-                    {props.title}
+                    News title goes here
                 </div>
                 <div className="card-body">
-                    {props.headline}
+                    News body goes here
                 </div>
             </div>
         </div>
