@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
-import Map from '../component/Navigation';
-
+import Map from '../component/Navigation'
 class Profile extends Component {
   constructor() {
     super()
@@ -64,7 +63,7 @@ class Profile extends Component {
           </table>
         </div>
 
-        <Map />
+      <Map/>
       </div>
     )
   }
