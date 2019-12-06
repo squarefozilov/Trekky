@@ -1,6 +1,6 @@
 import React from "react";
 import History from "./History";
-import NewsFeed from './NewsFeed'
+// import NewsFeed from './NewsFeed'
 import Maps from "./Maps";
 import Destination from './Destination'
 import API from "../utils/API";
@@ -9,6 +9,7 @@ import size from '../utils/size'
 import styled from 'styled-components';
 import {Row,Container,Col } from 'reactstrap';
 import axios from "axios"
+import Test from "./Test"
 
 const Page = styled.div`
   margin: auto;
@@ -84,10 +85,12 @@ class Navigation extends React.Component{
       
 
 render(){
+    console.log(this.state.crimeNews)
     return (
     
         <div className="container" style={containerStyles}>
-            <NewsFeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+                <Test title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+            {/* <NewsFeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
                 <Container> 
                     <Row>
                        <Col>
