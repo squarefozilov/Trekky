@@ -149,6 +149,28 @@ app.get("/apikey", (req,res) => {
     res.json(process.env.APIkey)
 });
 
+app.get("/scrapeNews", (req,res) => {
+  axios.get("https://www.nydailynews.com/new-york/nyc-crime/").then(function(response){
+    var $ = cheerio.load(response.data);
+  // console.log(response.data);
+  let results = [];
+
+  $(".crd--cnt").each(function(i, element){
+      var title = $(element).find(".r-mb").find("a").text();
+      var headline = $(element).find("p.preview-text").text();
+      if(title !== "" && headline !== ""){
+          results.push({
+              title:title,
+              headline: headline
+          })
+      }
+  })
+  res.json(results[0]);
+  
+  })
+  
+})
+
 // Send every other request to the react app.
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));

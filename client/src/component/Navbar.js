@@ -44,8 +44,6 @@ class  Navbar extends React.Component{
             
           )
 
-
-
     return (
         <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
             <a className="navbar-brand" href="/">Trekky</a>
