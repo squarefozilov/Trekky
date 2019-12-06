@@ -150,8 +150,8 @@ app.get("/apikey", (req,res) => {
 });
 
 app.get("/scrapeNews", (req,res) => {
-  
-  var $ = cheerio.load(response.data);
+  axios.get("https://www.nydailynews.com/new-york/nyc-crime/").then(function(response){
+    var $ = cheerio.load(response.data);
   // console.log(response.data);
   let results = [];
 
@@ -165,12 +165,11 @@ app.get("/scrapeNews", (req,res) => {
           })
       }
   })
-
-  console.log(results[0]);
-}).catch(function(err){
-  if (err) throw err;
+  res.json(results[0]);
+  
+  })
+  
 })
-
 
 // Send every other request to the react app.
 app.get("*", (req, res) => {
