@@ -13,7 +13,6 @@ class App extends React.Component{
     return (
       <Router>
         <div className="App">
-        
           <Navbar  />
           <Switch>
             <Route exact path="/" component={Home} />
