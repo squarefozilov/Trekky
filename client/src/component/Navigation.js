@@ -8,6 +8,7 @@ import device from '../utils/device'
 import size from '../utils/size'
 import styled from 'styled-components';
 import {Row,Container,Col } from 'reactstrap';
+import axios from "axios"
 
 const Page = styled.div`
   margin: auto;
@@ -37,12 +38,17 @@ const containerStyles = {
 class Navigation extends React.Component{
     state = {
         crimeLocations:[],
-        usrLocation:[]
+        usrLocation:[],
+        crimeNews: {
+            title: "",
+            headline: ""
+        }
     }
     componentDidMount = () =>{
         this.grabCrimeData()
         this.getUsrLocale()  
         this.loadCrimeLocale(this.state.crimeLocations)
+        this.getCrimeNews()
     }
     loadCrimeLocale = (arr) => {
         let locale = arr;
@@ -67,13 +73,21 @@ class Navigation extends React.Component{
         function(){console.log("User Locale in state =>",this.state.usrLocation)})
         return {lat:position.coords.latitude,lng:position.coords.longitude}
     }
+    getCrimeNews = () => {
+        // TODO: need to update API for getting news.
+        axios.get("/scrapeNews").then((response) => {
+            this.setState({
+                crimeNews: response.data
+            });
+        })
+    }
       
 
 render(){
     return (
     
         <div className="container" style={containerStyles}>
-            <NewsFeed/>
+            <NewsFeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
                 <Container> 
                     <Row>
                        <Col>
