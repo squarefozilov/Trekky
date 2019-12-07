@@ -46,8 +46,8 @@ class Navigation extends React.Component{
         }
     }
     componentDidMount = () =>{
+        this.getUsrLocale()
         this.grabCrimeData()
-        this.getUsrLocale()  
         this.loadCrimeLocale(this.state.crimeLocations)
         this.getCrimeNews()
     }
@@ -67,7 +67,11 @@ class Navigation extends React.Component{
         .catch((err) => {console.log(err)})
     }
     getUsrLocale = () => {
-        return navigator.geolocation.getCurrentPosition(this.showPosition);
+        if(navigator.geolocation){
+        return navigator.geolocation.watchPosition(this.showPosition);
+        } else {
+            return console.log("GPS unavailable")
+        }
     }
     showPosition = (position) => {
         this.setState({usrLocation:{lat:position.coords.latitude,lng:position.coords.longitude}}, 
