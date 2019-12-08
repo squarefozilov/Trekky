@@ -34,9 +34,9 @@ app.get("/add/user", function(){
 
         console.log(data)
         res.json(data)
-    })
-})
-var Userspass = require('./routes/Users')
+    });
+});
+var Userspass = require('./routes/Users');
 
 app.use('/', Userspass)
 // This route posts the saved books to the database.

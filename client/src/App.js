@@ -1,12 +1,14 @@
 import React from 'react';
 import './App.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import Navbar from "./component/Navbar"
+import Navbar from "./component/navbar/Navbar"
 import Home from "./component/Home"
 import Navigation from "./component/Navigation";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
 import Profile from "./signin/Profile";
+import {Row,Container,Col } from 'reactstrap';
+
 
 class App extends React.Component{
   render(){
@@ -21,6 +23,7 @@ class App extends React.Component{
             <Route exact path="/login" component={Login} />
             <Route exact path="/profile" component={Profile} />
             {/* <Route component={NoMatch} /> */}
+           
           </Switch>
         </div>
       </Router>
