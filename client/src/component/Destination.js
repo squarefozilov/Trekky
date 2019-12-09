@@ -29,7 +29,7 @@ class Destination extends Component{
     const token = localStorage.usertoken
    // console.log(token);
     const decoded = jwt_decode(token)
-    console.log("-----"+ decoded._id);
+  //  console.log("-----"+ decoded._id);
     this.setState({
       userid : decoded._id,
       email: decoded.email
