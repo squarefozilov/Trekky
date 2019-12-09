@@ -105,14 +105,16 @@ render(){
                          <Destination/>
                         </Col>
                     </Row>
+                    
                     <Maps
                         coor={
                         this.state.crimeLocations.map(function(item){
                         return {lat:item.latitude, lng:item.longitude}
                         })}
                         usrLocale={this.state.usrLocation} 
-                    />     
-                </Container>       
+                    />   
+                    </Container>   
+                      
         </div>
      
     );

@@ -1,21 +1,72 @@
+
+/* .mobile-nav-buttons{
+    display:none;
+} */
+
+.navbar-nav{
+    display:none;
+}
+
 .navbar-dark{
-    width:90%;
+    width:100%;
+    background-color:rgb(9, 104, 182)!important;
 }
 
 .navbar-brand {
-    font-family:Candara;
-    font-size:20px;
-    
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size:20px; 
 }
 
 .nav-link {
-    font-family:Candara;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size:20px;
+}
+
+ul{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    margin:0;
+    padding: 0;
+    display:flex;
+    height:1rem;
+}
+
+ul a 
+{
+    position:relative;
+    width:60px;
+    height:60px;
+    background:#f1f1f1;
+    display:block;
+    text-align:center;
+    margin:10px 10px;
+    border-radius:60%;
+    padding:6px;
+    box-sizing:border-box;
+    text-decoration:none;
+    box-shadow: 0, 10px, 15px rgba(0,0,0,0.9);
+    transition:.5s;
+    line-height:55px;
+    filter: drop-shadow(5px 5px 5px #000);
+}
+ul a:hover {
+    filter:none
+  }
+
+.fas {
+    font-size:3em;
+    color:rgb(80, 140, 189);
+}
+.far {
+    font-size:3em;
+    line-height:45px;
+    color:rgb(80, 140, 189);
 }
 
 @media(max-width:376px){
     .navbar-dark{
-        width:90%;
         height:20%;
         background-color: #333;
         overflow: hidden;
@@ -27,12 +78,12 @@
     }
     
     .navbar-brand {
-        font-family:Candara;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
         font-size:10px;
     }
     
     .nav-link {
-        font-family:Candara;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
         font-size:10px;
     }
 }
@@ -49,12 +100,12 @@
     }
     
     .navbar-brand {
-        font-family:Candara;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
         font-size:20px;
     }
     
     .nav-link {
-        font-family:Candara;
+        font-family: 'Yanone Kaffeesatz', sans-serif;
         font-size:20px; 
     }
 }
