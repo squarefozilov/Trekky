@@ -1,12 +1,12 @@
 /* I am not sure why I cannot style the maps position in this page. */
-
-.google-map {
-    max-width:100%;
-    margin:0;
+/* 
+.Map {
+    
+    pointer-events:"none",
 }
 @media(min-width:320px) {
     .google-map{  
      width:80%;
     
 }
-}
+} */

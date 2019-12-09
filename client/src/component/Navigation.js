@@ -34,7 +34,8 @@ const Page = styled.div`
 //   };
 const containerStyles = {
     display:"block",
-    margin:"auto"
+    margin:"auto",
+    maxHeight:"100%"
 };
 
 class Navigation extends React.Component{

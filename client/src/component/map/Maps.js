@@ -4,8 +4,6 @@ import './Maps.css';
 
 
 // const mapStyles = {
-// //   width: '90%',
-// //   height: '90%',
 //   pointerEvents:"none",
 // };
 
