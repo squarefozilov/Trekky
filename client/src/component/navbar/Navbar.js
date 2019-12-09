@@ -16,12 +16,12 @@ class Navbar extends React.Component{
           <ul className="navbar-nav">
             <li className="nav-item">
                 <Link to="/login" className="nav-link">
-                  Login>
+                  Login
                 </Link>
             </li>
             <li className="nav-item">
                 <Link to="/signup" className="nav-link">
-                  Register>
+                  Register
                 </Link> 
             </li>
           </ul>  
@@ -30,12 +30,12 @@ class Navbar extends React.Component{
           <ul className="navbar-nav">
             <li className="nav-item">
                 <Link to="/" className="nav-link">
-                  User>
+                  User
                 </Link>
             </li>
             <li className="nav-item">
                 <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                Logout>
+                Logout
               </a>
             </li>
           </ul>
