@@ -23,7 +23,7 @@ users.post('/register', (req, res) => {
   })
     .then(user => {
       if (!user) {
-        
+        //  userData.password = req.body.password
           userData.password = "pass"
           User.create(userData)
             .then(user => {
@@ -97,6 +97,39 @@ users.get("/alluser", function(req, res) {
   });
   
 });
+users.post('/userhistory', (req, res) => {
+  const today = new Date()
+  const userData = {
+    first_name: req.body.first_name,
+    last_name: req.body.last_name,
+    email: req.body.email,
+    password: req.body.password,
+    created: today
+  }
+
+  User.findOne({
+    email: req.body.email
+  })
+    .then(user => {
+      if (!user) {
+        
+          userData.password = "pass"
+          User.create(userData)
+            .then(user => {
+              res.json({ status: user.email + 'Registered!' })
+            })
+            .catch(err => {
+              res.send('error: ' + err)
+            })
+       
+      } else {
+        res.json({ error: 'User already exists' })
+      }
+    })
+    .catch(err => {
+      res.send('error: ' + err)
+    })
+})
 
 
 

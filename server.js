@@ -10,8 +10,6 @@ const Users = require('./model/Users')
 const jwt = require('jsonwebtoken')
 process.env.SECRET_KEY = 'secret';
 const crimeLocationsController = require('./controllers/crimeLocationController');
-
-
 // Defining middleware
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -35,30 +33,11 @@ app.get("/add/user", function(){
         res.json(data)
     })
 })
-var Userspass = require('./routes/Users')
 
-app.use('/', Userspass)
-// This route posts the saved books to the database.
-app.post("/add/user", function(req, res) {
-    const User = new Users({
-        id: new mongoose.Types.ObjectId(),
-        name: req.body.name,
-        email:req.body.email,
-        picture:req.body.picture
-    });
-    
-    User.save(function(err,user){
-        if (err) {console.log(err)}
-        console.log(user.name , " was just added to the database")
-        
-        Users.find({}, function(err, data){
-            if(err){console.log(err)}
-            res.json(data)
-        })
-    })
-    
-    
-});
+var Userspass = require('./routes/Users')
+app.use('/', Userspass);
+var UserHistory = require('./routes/UserHistory');
+app.use('/', UserHistory);
 
 
 app.post('/register', (req, res) => {

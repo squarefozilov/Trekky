@@ -16,6 +16,19 @@ export const register = newUser => {
     })
 }
 
+export const newSearch = addSearch => {
+  return axios
+    .post('/addHistory', {
+      email : addSearch.email,
+      userid: addSearch.password, 
+      fromlocation: addSearch.fromlocation, 
+      tolocation: this.addSearch.tolocation 
+    })
+    .then(response => {
+      console.log('Registered',response)
+    })
+}
+
 export const login = user => {
 
   return axios

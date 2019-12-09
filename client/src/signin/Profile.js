@@ -25,8 +25,11 @@ class Profile extends Component {
 
   componentDidMount() {
     const token = localStorage.usertoken
+   // console.log(token);
     const decoded = jwt_decode(token)
+    console.log("-----"+ decoded._id);
     this.setState({
+     // _id : decoded.decoded._id,
       first_name: decoded.first_name,
       last_name: decoded.last_name,
       email: decoded.email
@@ -50,6 +53,7 @@ class Profile extends Component {
               <tr>
                 <td>Fist Name</td>
                 <td>{this.state.first_name}</td>
+                <td>{this.state.id}</td>
               </tr>
               <tr>
                 <td>Last Name</td>
@@ -63,10 +67,11 @@ class Profile extends Component {
           </table>
         </div>
 
-      <Map/>
+        <Map/>
       </div>
     )
   }
 }
 
 export default Profile
+ //
