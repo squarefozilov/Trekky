@@ -25,9 +25,6 @@ class  Navbar extends React.Component{
           )
 
           const userLink = (
-             
-
-            
             <ul className="navbar-nav">
               <li className="nav-item">
                 <Link to="/profile" className="nav-link">
@@ -39,9 +36,7 @@ class  Navbar extends React.Component{
                   Log Out
                 </Link>
               </li>
-            </ul>
-            
-            
+            </ul> 
           )
 
     return (
