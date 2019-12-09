@@ -10,7 +10,6 @@ let jumboStyles = {
 class Destination extends React.Component{
     render(){
         return(
-            
             <div className="row">
                 <div className="jumbotron col-7" style={jumboStyles}>
                     <div className="input-group">
