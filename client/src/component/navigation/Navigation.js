@@ -1,30 +1,32 @@
 import React from "react";
-import History from "./History";
+import History from "../History";
 // import NewsFeed from './NewsFeed'
-import Maps from "./map/Maps";
-import Destination from './Destination'
-import API from "../utils/API";
-import device from '../utils/device'
-import size from '../utils/size'
+import Maps from "../map/Maps";
+// import Maps from "./Map"
+import Destination from '../Destination'
+import API from "../../utils/API";
+// import device from '../utils/device'
+// import size from '../utils/size'
 import styled from 'styled-components';
 import {Row,Container,Col } from 'reactstrap';
 import axios from "axios"
-import Test from "./Test"
-import './map/Maps.css';
+import Test from "../Test"
+import '../map/Maps.css';
+import "./Navigation.css";
 
-const Page = styled.div`
-  margin: auto;
-  font-family: "sans-serif";
-  text-align: center;
+// const Page = styled.div`
+//   margin: auto;
+//   font-family: "sans-serif";
+//   text-align: center;
 
-  @media ${device.laptop} {  // -> "@media (min-width: ${size.laptop})" -> "@media (min-width: 1024px)"
-    max-width: 800px;
-  }
+//   @media ${device.laptop} {  // -> "@media (min-width: ${size.laptop})" -> "@media (min-width: 1024px)"
+//     max-width: 800px;
+//   }
 
-  @media ${device.desktop} {
-    max-width: 1400px;
-  }
-`;
+//   @media ${device.desktop} {
+//     max-width: 1400px;
+//   }
+// `;
 
 // const mapStyles = {
 //     width: '100px',
@@ -35,7 +37,8 @@ const Page = styled.div`
 const containerStyles = {
     display:"block",
     margin:"auto",
-    maxHeight:"100%"
+    maxHeight:"100vh",
+
 };
 
 class Navigation extends React.Component{
