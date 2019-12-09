@@ -2,23 +2,14 @@ import React from "react";
 import History from "./History";
 // import NewsFeed from './NewsFeed'
 import Maps from "./map/Maps";
-import Destination from './Destination'
 import API from "../utils/API";
 import device from '../utils/device'
 import size from '../utils/size'
 import styled from 'styled-components';
-import {Row,Container,Col } from 'reactstrap';
+import {Container} from 'reactstrap';
 import axios from "axios"
-import Test from "./Test"
 import './map/Maps.css';
-import {Carousel, CarouselItem} from "reactstrap"
 import Slider from "./Slider";
-
-const items = [
-    {
-
-    }
-]
 
 const Page = styled.div`
   margin: auto;
