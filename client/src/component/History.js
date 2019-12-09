@@ -13,7 +13,7 @@ class History extends Component{
         // console.log(token);
          const decoded = jwt_decode(token)
          console.log("-----"+ decoded._id);
-        axios.get('/usersearches/'+decoded._id)
+         axios.get('/usersearches/'+decoded._id)
         .then(response => {
           console.log("historyArrat",response.data);
           this.setState({history : response.data})

@@ -40,11 +40,12 @@ class Signup extends Component {
       <div className="container">
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
-            <form noValidate onSubmit={this.onSubmit}>
+            <form  onSubmit={this.onSubmit} class="needs-validation" novalidate>
               <h1 className="h3 mb-3 font-weight-normal">Register</h1>
               <div className="form-group">
-                <label htmlFor="name">First name</label>
+                <label htmlFor="name" for="validationTooltip01">First name</label>
                 <input
+                  className="form-control" id="validationTooltip01" 
                   type="text"
                   className="form-control"
                   name="first_name"
