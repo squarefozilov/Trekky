@@ -10,6 +10,7 @@ const Users = require('./model/Users')
 const jwt = require('jsonwebtoken')
 process.env.SECRET_KEY = 'secret';
 const crimeLocationsController = require('./controllers/crimeLocationController');
+const newsFeedController = require('./controllers/newsFeedController');
 
 
 // Defining middleware
@@ -33,9 +34,9 @@ app.get("/add/user", function(){
 
         console.log(data)
         res.json(data)
-    })
-})
-var Userspass = require('./routes/Users')
+    });
+});
+var Userspass = require('./routes/Users');
 
 app.use('/', Userspass)
 // This route posts the saved books to the database.
@@ -54,12 +55,9 @@ app.post("/add/user", function(req, res) {
         Users.find({}, function(err, data){
             if(err){console.log(err)}
             res.json(data)
-        })
-    })
-    
-    
+        });
+    });
 });
-
 
 app.post('/register', (req, res) => {
     console.log("connectin")
@@ -115,7 +113,7 @@ app.get("/api/crime",crimeLocationsController.getCrimeData)
 app.post("/api/crime", crimeLocationsController.addCrimeDataToDB)
 
 
-  app.get('/profile', (req, res) => {
+app.get('/profile', (req, res) => {
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
   
     Users.findOne({
@@ -149,34 +147,13 @@ app.get("/apikey", (req,res) => {
     res.json(process.env.APIkey)
 });
 
-app.get("/scrapeNews", (req,res) => {
-  axios.get("https://www.nydailynews.com/new-york/nyc-crime/").then(function(response){
-    var $ = cheerio.load(response.data);
-  // console.log(response.data);
-  let results = [];
-
-  $(".crd--cnt").each(function(i, element){
-      var title = $(element).find(".r-mb").find("a").text();
-      var headline = $(element).find("p.preview-text").text();
-      if(title !== "" && headline !== ""){
-          results.push({
-              title:title,
-              headline: headline
-          })
-      }
-  })
-  res.json(results[0]);
+app.get("/scrapeNews",newsFeedController.getScrapedNews);
   
-  })
-  
-})
-
 // Send every other request to the react app.
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "./client/build/index.html"));
 });
 
-
 app.listen(PORT, () => {
     console.log(`===> API server now on port ${PORT}!`);
-})
+});
