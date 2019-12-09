@@ -1,5 +1,11 @@
+
+/* Would be cool to make this the home wall paper. */
+/* .Home {
+    background-image:url("https://images.pexels.com/photos/165776/pexels-photo-165776.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")!important
+} */
+
 .jumbotron{
-    background-image:url("https://images.pexels.com/photos/697662/pexels-photo-697662.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
+    background-image:url("https://images.pexels.com/photos/1022692/pexels-photo-1022692.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
     width:100%;
 }
 
