@@ -87,11 +87,11 @@ class Navbar extends React.Component{
                   <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
                     <i className="far fa-map"></i>
                   </Link>
-                  <Link to="/login" className="nav-link">
-                    <i className="fas fa-user-lock"></i>
-                  </Link>
                   <Link to="/" className="nav-link">
                     <i className="fas fa-users-cog"></i>
+                  </Link>
+                  <Link to="/login" className="nav-link">
+                    <i className="fas fa-user-lock"></i>
                   </Link>
                   <Link to="/signup" className="nav-link">
                     Register
