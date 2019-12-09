@@ -1,7 +1,7 @@
 import React from "react";
 import History from "./History";
 // import NewsFeed from './NewsFeed'
-import Maps from "./Maps";
+import Maps from "./map/Maps";
 import Destination from './Destination'
 import API from "../utils/API";
 import device from '../utils/device'
@@ -10,6 +10,7 @@ import styled from 'styled-components';
 import {Row,Container,Col } from 'reactstrap';
 import axios from "axios"
 import Test from "./Test"
+import './map/Maps.css';
 
 const Page = styled.div`
   margin: auto;
@@ -33,7 +34,8 @@ const Page = styled.div`
 //   };
 const containerStyles = {
     display:"block",
-    margin:"auto"
+    margin:"auto",
+    maxHeight:"100%"
 };
 
 class Navigation extends React.Component{
@@ -46,8 +48,8 @@ class Navigation extends React.Component{
         }
     }
     componentDidMount = () =>{
+        this.getUsrLocale()
         this.grabCrimeData()
-        this.getUsrLocale()  
         this.loadCrimeLocale(this.state.crimeLocations)
         this.getCrimeNews()
     }
@@ -67,7 +69,11 @@ class Navigation extends React.Component{
         .catch((err) => {console.log(err)})
     }
     getUsrLocale = () => {
-        return navigator.geolocation.getCurrentPosition(this.showPosition);
+        if(navigator.geolocation){
+        return navigator.geolocation.watchPosition(this.showPosition);
+        } else {
+            return console.log("GPS unavailable")
+        }
     }
     showPosition = (position) => {
         this.setState({usrLocation:{lat:position.coords.latitude,lng:position.coords.longitude}}, 
@@ -100,14 +106,16 @@ render(){
                          <Destination/>
                         </Col>
                     </Row>
+                    
                     <Maps
                         coor={
                         this.state.crimeLocations.map(function(item){
                         return {lat:item.latitude, lng:item.longitude}
                         })}
                         usrLocale={this.state.usrLocation} 
-                    />     
-                </Container>       
+                    />   
+                    </Container>   
+                      
         </div>
      
     );
