@@ -16,12 +16,12 @@ class Navbar extends React.Component{
           <ul className="navbar-nav">
             <li className="nav-item">
                 <Link to="/login" className="nav-link">
-                  Login>
+                  Login
                 </Link>
             </li>
             <li className="nav-item">
                 <Link to="/signup" className="nav-link">
-                  Register>
+                  Register
                 </Link> 
             </li>
           </ul>  
@@ -30,12 +30,12 @@ class Navbar extends React.Component{
           <ul className="navbar-nav">
             <li className="nav-item">
                 <Link to="/" className="nav-link">
-                  User>
+                  User
                 </Link>
             </li>
             <li className="nav-item">
                 <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                Logout>
+                Logout
               </a>
             </li>
           </ul>
@@ -58,7 +58,7 @@ class Navbar extends React.Component{
                       Map
                   </Link>
                 </Col>
-                <Col>
+                {/* <Col>
                   <Link to="/login" className="nav-link">
                       Login
                   </Link>
@@ -67,7 +67,7 @@ class Navbar extends React.Component{
                   <Link to="/signup" className="nav-link">
                     Register
                   </Link>
-                </Col>
+                </Col> */}
                 <Col> 
                   <Link to="/" className="nav-link">
                     User
@@ -78,24 +78,23 @@ class Navbar extends React.Component{
           </ul>
           {localStorage.usertoken ? userLink : loginRegLink}
 
-          <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
-        <ul className="mobile-nav-buttons">
-              
-                  <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
-                    <i className="fas fa-home"></i>
-                  </Link>
-                  <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
-                    <i className="far fa-map"></i>
-                  </Link>
-                  <Link to="/" className="nav-link">
-                    <i className="fas fa-users-cog"></i>
-                  </Link>
-                  <Link to="/login" className="nav-link">
-                    <i className="fas fa-user-lock"></i>
-                  </Link>
-                  <Link to="/signup" className="nav-link">
-                    Register
-                  </Link>
+      <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
+        <ul className="mobile-nav-buttons">      
+          <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+            <i className="fas fa-home"></i>
+          </Link>
+          <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
+            <i className="far fa-map"></i>
+          </Link>
+          <Link to="/" className="nav-link">
+            <i className="fas fa-users-cog"></i>
+          </Link>
+          <Link to="/login" className="nav-link">
+            <i className="fas fa-user-lock"></i>
+          </Link>
+          <Link to="/signup" className="nav-link">
+            Register
+          </Link>
         </ul>
       </nav>
       </nav>

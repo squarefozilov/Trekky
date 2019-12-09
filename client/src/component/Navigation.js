@@ -2,15 +2,14 @@ import React from "react";
 import History from "./History";
 // import NewsFeed from './NewsFeed'
 import Maps from "./map/Maps";
-import Destination from './Destination'
 import API from "../utils/API";
 import device from '../utils/device'
 import size from '../utils/size'
 import styled from 'styled-components';
-import {Row,Container,Col } from 'reactstrap';
+import {Container} from 'reactstrap';
 import axios from "axios"
-import Test from "./Test"
 import './map/Maps.css';
+import Slider from "./Slider";
 
 const Page = styled.div`
   margin: auto;
@@ -95,17 +94,40 @@ render(){
     return (
     
         <div className="container" style={containerStyles}>
-                <Test title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+                {/* <Test title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
             {/* <NewsFeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
                 <Container> 
-                    <Row>
+                    <Slider title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+                    {/* <div id="testCarousel" className="carousel slide" data-ride="carousel">
+                        <ol className="carousel-indicators">
+                            <li data-target="#carouselIndicators" data-slide-to="0" className="active"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                        </ol>
+                        <div className="carousel-inner">
+                            <div className="carousel-item active">
+                                <Test title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+                            </div>
+                            <div className="carousel-item">
+                                <Destination />
+                            </div>
+                        </div>
+                        <a className="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="sr-only">Previous</span>
+                        </a>
+                        <a className="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="sr-only">Next</span>
+                        </a>
+                    </div> */}
+                    {/* <Row>
                        <Col>
                          <History />
                        </Col>
                         <Col>
                          <Destination/>
                         </Col>
-                    </Row>
+                    </Row> */}
                     
                     <Maps
                         coor={
