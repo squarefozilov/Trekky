@@ -2,7 +2,7 @@ import React from "react";
 import {Link} from "react-router-dom";
 // import styled from 'styled-components';
 import "./Navbar.css"
-// import {Row,Container,Col } from 'reactstrap';
+import {Row,Container,Col } from 'reactstrap';
 
 class Navbar extends React.Component{
     logOut(e) {
@@ -16,52 +16,88 @@ class Navbar extends React.Component{
           <ul className="navbar-nav">
             <li className="nav-item">
                 <Link to="/login" className="nav-link">
-                  Login
+                  Login>
                 </Link>
             </li>
             <li className="nav-item">
                 <Link to="/signup" className="nav-link">
-                  Register
+                  Register>
                 </Link> 
             </li>
           </ul>  
         )
-
         const userLink = (
-          
-          
-          
           <ul className="navbar-nav">
             <li className="nav-item">
                 <Link to="/" className="nav-link">
-                  User
+                  User>
                 </Link>
             </li>
             <li className="nav-item">
                 <a href="" onClick={this.logOut.bind(this)} className="nav-link">
-                Logout
+                Logout>
               </a>
             </li>
           </ul>
-          
-           
         )
 
     return (
-   
+      
       <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
           <a className="navbar-brand" href="/">Trekky</a>
           <ul className="navbar-nav">
-              <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
-                  Home
-              </Link>
-              <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
-                  Map
-              </Link>
+            <Container>
+              <Row>
+                <Col>
+                  <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                      Home
+                  </Link>
+                </Col>
+                <Col>
+                  <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
+                      Map
+                  </Link>
+                </Col>
+                <Col>
+                  <Link to="/login" className="nav-link">
+                      Login
+                  </Link>
+                </Col>
+                <Col>
+                  <Link to="/signup" className="nav-link">
+                    Register
+                  </Link>
+                </Col>
+                <Col> 
+                  <Link to="/" className="nav-link">
+                    User
+                  </Link>
+                </Col>
+              </Row>
+            </Container>
           </ul>
-          <ul className="navbar-nav ml-auto">
           {localStorage.usertoken ? userLink : loginRegLink}
-          </ul>
+
+          <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
+        <ul className="mobile-nav-buttons">
+              
+                  <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                    <i className="fas fa-home"></i>
+                  </Link>
+                  <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
+                    <i className="far fa-map"></i>
+                  </Link>
+                  <Link to="/" className="nav-link">
+                    <i className="fas fa-users-cog"></i>
+                  </Link>
+                  <Link to="/login" className="nav-link">
+                    <i className="fas fa-user-lock"></i>
+                  </Link>
+                  <Link to="/signup" className="nav-link">
+                    Register
+                  </Link>
+        </ul>
+      </nav>
       </nav>
     );
     }

@@ -34,7 +34,8 @@ const Page = styled.div`
 //   };
 const containerStyles = {
     display:"block",
-    margin:"auto"
+    margin:"auto",
+    maxHeight:"100%"
 };
 
 class Navigation extends React.Component{
@@ -105,14 +106,16 @@ render(){
                          <Destination/>
                         </Col>
                     </Row>
+                    
                     <Maps
                         coor={
                         this.state.crimeLocations.map(function(item){
                         return {lat:item.latitude, lng:item.longitude}
                         })}
                         usrLocale={this.state.usrLocation} 
-                    />     
-                </Container>       
+                    />   
+                    </Container>   
+                      
         </div>
      
     );
