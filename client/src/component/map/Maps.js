@@ -1,11 +1,15 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import './Maps.css';
+import { relative } from 'path';
 
 
-// const mapStyles = {
-//   pointerEvents:"none",
-// };
+const mapStyles = {
+  width:"100%",
+  height:"100%",
+  position:"relative",
+  pointerEvents:"none",
+};
 
 class Maps extends React.Component {
 
@@ -25,7 +29,7 @@ class Maps extends React.Component {
             className="google-map"
             google={this.props.google}
             zoom={11}
-            // style={mapStyles}
+            style={mapStyles}
             initialCenter={{lat: 40.7128, lng: -74.0060}}
             >
           {crimeLocales}

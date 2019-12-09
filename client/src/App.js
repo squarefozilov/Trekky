@@ -3,19 +3,20 @@ import './App.css';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import Navbar from "./component/navbar/Navbar"
 import Home from "./component/home/Home"
-import Navigation from "./component/Navigation";
+import Navigation from "./component/navigation/Navigation";
 import Signup from "./component/Signup";
 import Login from "./component/Login";
 import Profile from "./signin/Profile";
-import {Row,Container,Col } from 'reactstrap';
+// import {Row,Container,Col } from 'reactstrap';
 
 
 class App extends React.Component{
   render(){
     return (
       <Router>
+        
         <div className="App">
-          <Navbar  />
+          <Navbar/>
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/navigation" component={Navigation} />

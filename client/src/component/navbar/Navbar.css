@@ -24,13 +24,14 @@
         visibility:visible;
     }
     .navbar-dark{
-        height:20%;
+        height:10%;
         background-color: #333;
-        overflow: hidden;
+        /* overflow: hidden; */
         position: fixed;
         bottom: 0;
+        right:0;
+        left:0;
         width: 100%;
-        float:left;
         z-index:1;
     }
     
@@ -63,12 +64,12 @@ ul a
     background:#f1f1f1;
     display:block;
     text-align:center;
-    margin:0px 7px;
+    margin:0px 6px;
     border-radius:60%;
     padding:6px;
     box-sizing:border-box;
     text-decoration:none;
-    box-shadow: 0, 10px, 15px rgba(0,0,0,0.9);
+    box-shadow: 0, 15px, 20px rgba(0,0,0,0.9);
     transition:.5s;
     line-height:55px;
     filter: drop-shadow(5px 5px 5px #000);
