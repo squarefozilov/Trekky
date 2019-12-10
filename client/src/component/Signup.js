@@ -41,7 +41,7 @@ class Signup extends Component {
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
             <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal">Register</h1>
+              <h1 className="h3 mb-3 font-weight-normal" style={{"color":"rgb(27, 135, 223"}}>Register</h1>
               <div className="form-group">
                 <label htmlFor="name">First name</label>
                 <input

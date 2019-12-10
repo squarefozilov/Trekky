@@ -1,47 +1,11 @@
 import React from "react";
-import History from "../History";
-// import NewsFeed from './NewsFeed'
 import Maps from "../map/Maps";
-// import Maps from "./Map"
-import Destination from '../Destination'
 import API from "../../utils/API";
-// import device from '../utils/device'
-// import size from '../utils/size'
-import styled from 'styled-components';
 import {Container} from 'reactstrap';
 import axios from "axios"
-import Test from "../Test"
 import '../map/Maps.css';
 import "./Navigation.css";
-import Slider from "../Slider";
-
-
-// const Page = styled.div`
-//   margin: auto;
-//   font-family: "sans-serif";
-//   text-align: center;
-
-//   @media ${device.laptop} {  // -> "@media (min-width: ${size.laptop})" -> "@media (min-width: 1024px)"
-//     max-width: 800px;
-//   }
-
-//   @media ${device.desktop} {
-//     max-width: 1400px;
-//   }
-// `;
-
-// const mapStyles = {
-//     width: '100px',
-//     height: '100px',
-//     // display:"block",
-//     // margin:"auto"
-//   };
-const containerStyles = {
-    display:"block",
-    margin:"auto",
-    maxHeight:"100vh",
-
-};
+import Slider from "../slider/Slider";
 
 class Navigation extends React.Component{
     state = {
@@ -53,7 +17,7 @@ class Navigation extends React.Component{
         }
     }
     componentDidMount = () =>{
-        this.getUsrLocale()
+        this.getUsrLocale(this.loadCrimeLocale)
         this.grabCrimeData()
         this.loadCrimeLocale(this.state.crimeLocations)
         this.getCrimeNews()
@@ -73,12 +37,10 @@ class Navigation extends React.Component{
         })
         .catch((err) => {console.log(err)})
     }
-    getUsrLocale = () => {
-        if(navigator.geolocation){
-        return navigator.geolocation.watchPosition(this.showPosition);
-        } else {
-            return console.log("GPS unavailable")
-        }
+    getUsrLocale = (callback) => {
+        return( navigator.geolocation.getCurrentPosition(this.showPosition),
+                callback(this.state.crimeLocations))
+        
     }
     showPosition = (position) => {
         this.setState({usrLocation:{lat:position.coords.latitude,lng:position.coords.longitude}}, 
@@ -93,17 +55,22 @@ class Navigation extends React.Component{
             });
         })
     }
+    // HAVE TO UNMOUNT THE NAVIGATION SYSTEM WHEN IT IS NO LONGER IN USE.
+    // componentWillUnmount = () => {
+    //     window.removeEventListener('onbeforeunload', navigator.geolocation.clearWatch());
+    // }
       
-
 render(){
-    console.log(this.state.crimeNews)
+     console.log(navigator)
     return (
     
-        <div className="container" style={containerStyles}>
+        <div className="container"
+        //  style={containerStyles}
+         >
                 {/* <Test title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
             {/* <NewsFeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
                 <Container> 
-                    <Slider title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+                    <Slider className="slider" title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
                     {/* <div id="testCarousel" className="carousel slide" data-ride="carousel">
                         <ol className="carousel-indicators">
                             <li data-target="#carouselIndicators" data-slide-to="0" className="active"></li>
@@ -134,14 +101,16 @@ render(){
                          <Destination/>
                         </Col>
                     </Row> */}
-                    
-                    <Maps
+                    <Maps 
                         coor={
                         this.state.crimeLocations.map(function(item){
                         return {lat:item.latitude, lng:item.longitude}
                         })}
                         usrLocale={this.state.usrLocation} 
-                    />   
+                        google={this.props.google}
+                    >
+                        
+                        </Maps> 
                     </Container>   
                       
         </div>

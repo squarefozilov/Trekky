@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import {Carousel} from "react-bootstrap"
-import Test from "./Test";
-import Destination from "./Destination";
+import Test from "../Test";
+import Destination from "../Destination";
 
 function Slider(props){
     return (
-        <div>
+        <div className="slider-container">
             <Carousel>
                 <Carousel.Item>
                     <Test title={props.title} headline={props.headline} />
