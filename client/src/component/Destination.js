@@ -22,10 +22,20 @@ class Destination extends React.Component{
                         <div className="input-group-prepend">
                             <span className="input-group-text">To</span>
                         </div>
-                        <input type="text" className="form-control" placeholder="Destination"></input>
-                    </div>
-                    </div>
-                    </div>
+                        <input
+                        onChange={this.props.handleInputChange}
+                        value={this.props.value}
+                        name="destination"
+                        type="text" 
+                        className="form-control" 
+                        placeholder="Destination"
+                        id="destination"></input>
+                    </div><br></br>
+                    <button onClick={this.props.handleFormSubmit} className="btn btn-primary mt-8">
+                        Go!
+                    </button>
+                </div>
+            </div>
         );
     };
 };

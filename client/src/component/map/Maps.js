@@ -1,6 +1,7 @@
 import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import './Maps.css';
+
 const mapStyles = {
   width:"100vw",
   height:"100vh",
@@ -9,17 +10,23 @@ const mapStyles = {
 
 class Maps extends React.Component {
 
+
   state = {
     map : []
   }
 
   
- 
+  // markerIcon = {
+  //   url: "../../nav-icons/crosshair.png",
+  //   scaledSize: new this.props.google.maps.Size(10, 10)
+  // }
+
   markerIcon = {
     // src: "../../nav-icons/crosshair.png",
     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFiVpCGq6a1uRuvpBvmybCdTrbu-LzbRQyLMF7JR_JUudoEb8FQ&s",
     scaledSize: new this.props.google.maps.Size(40, 40)
   }
+
 
   someFunc = (mapProps, map) => {
     console.log("mapProps", mapProps)
@@ -54,6 +61,7 @@ class Maps extends React.Component {
   
     render(){
       console.log("Google", new this.props.google.maps.DirectionsService())
+      
       const crimeIcon = {
         //     // url: "../../nav-icons/crime_icon.jpeg",
            url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXL8dMbULRMR3YVcdoZKDvHAKDEnyRIqnPx-llmYVULI5oTCTd&s",
@@ -75,7 +83,8 @@ class Maps extends React.Component {
          {/* <LoadScript>
           <GoogleMap> */}
 
-        <Map
+          <Map
+
             className="google-map"
             google={this.props.google}
             zoom={11}
@@ -92,7 +101,7 @@ class Maps extends React.Component {
           icon={this.markerIcon}
           />
           </Map>
-     
+
           {/* </GoogleMap>
           </LoadScript> */}
         </div>

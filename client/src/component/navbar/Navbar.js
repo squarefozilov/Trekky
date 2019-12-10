@@ -43,7 +43,7 @@ class Navbar extends React.Component{
 
     return (
       
-      <nav className="navbar navbar-dark bg-dark navbar-expand-lg">
+      <nav className="navbar navbar-dark bg-dark">
           <a className="navbar-brand" href="/">Trekky</a>
           <ul className="navbar-nav">
             <Container>
@@ -58,21 +58,12 @@ class Navbar extends React.Component{
                       Map
                   </Link>
                 </Col>
-                {/* <Col>
-                  <Link to="/login" className="nav-link">
-                      Login
-                  </Link>
-                </Col>
-                <Col>
-                  <Link to="/signup" className="nav-link">
-                    Register
-                  </Link>
-                </Col> */}
                 <Col> 
                   <Link to="/" className="nav-link">
                     User
                   </Link>
                 </Col>
+                
               </Row>
             </Container>
           </ul>

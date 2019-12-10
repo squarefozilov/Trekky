@@ -11,7 +11,7 @@ const jwt = require('jsonwebtoken')
 process.env.SECRET_KEY = 'secret';
 const crimeLocationsController = require('./controllers/crimeLocationController');
 const newsFeedController = require('./controllers/newsFeedController');
-
+const geocodeController = require('./controllers/geocodeController');
 
 // Defining middleware
 app.use(express.urlencoded({ extended: true }));
@@ -112,6 +112,17 @@ app.get("/api/crime",crimeLocationsController.getCrimeData)
 
 app.post("/api/crime", crimeLocationsController.addCrimeDataToDB)
 
+// app.get("/api/AddressToLatLng", geocodeController.convertAddToLatLng)
+app.get("/api/AddressToLatLng", (req,res) => {
+  const apiKey = "AIzaSyA-VspoF45DKRHLsuzBL0-hecHDNOUQdOY"
+  
+  axios.get("https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=AIzaSyA-VspoF45DKRHLsuzBL0-hecHDNOUQdOY")
+    .then(function(response){
+        res.json(response.data);
+    }).catch(function(err){
+        if (err) console.log(err);
+    })
+})
 
 app.get('/profile', (req, res) => {
     var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
