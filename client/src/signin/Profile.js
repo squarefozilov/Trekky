@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
-import Map from '../component/Navigation'
+import Map from '../component/navigation/Navigation'
 import { Redirect } from 'react-router-dom'
 
 class Profile extends Component {

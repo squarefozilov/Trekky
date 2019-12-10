@@ -61,7 +61,6 @@ class Destination extends Component{
 
     render(){
         return(
-            
             <div className="row">
                 <div className="jumbotron col-7" style={jumboStyles}>
                     <form onSubmit={this.onSubmit} >

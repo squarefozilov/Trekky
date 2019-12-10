@@ -1,0 +1,16 @@
+.container {
+    
+    display:unset;
+    max-width:-8%;
+    max-height: 10%;
+    margin:0;
+    overflow: hidden;
+    max-height:10%;
+    /* position: "relative" !important */
+    position:static;
+    top:0;
+}
+
+.slider{
+    height: 400px;
+}
