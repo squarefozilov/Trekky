@@ -157,7 +157,16 @@ class Navigation extends React.Component{
     }
     handleFormSubmit = event => {
         event.preventDefault();
-        // Add function to find route for user.
+        const address = this.state.destination;
+        API.convertAddToLatLng(address)
+            .then((res) => {
+                let latitude = res.data.results[0].geometry.location.lat;
+                let longitude = res.data.results[0].geometry.location.lng;
+                console.log(`latitude:`,latitude);
+                console.log(`longitude:`,longitude);
+
+                // FINDING ROUTE CODE BELOW HERE
+            })
     }
       
     render() {
