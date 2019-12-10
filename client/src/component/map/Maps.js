@@ -24,7 +24,7 @@ class Maps extends React.Component {
   someFunc = (mapProps, map) => {
     console.log("mapProps", mapProps)
     console.log("map ", map)
-
+    this.calcRoutes(map)
     // this.setState({map:map})
     // this.setState({map:mapProps} , function(){
     //   console.log("Map ",this.state.map)
