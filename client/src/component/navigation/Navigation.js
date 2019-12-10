@@ -115,6 +115,7 @@ class Navigation extends React.Component{
         this.setState({
             crimeNews : crimeNews.data
         }); 
+
     }
      
 
@@ -132,10 +133,12 @@ class Navigation extends React.Component{
         })
         .catch((err) => {console.log(err)})
     }
-    getUsrLocale(callback) {
+
+    getUsrLocale = (callback) => {
+
         return( navigator.geolocation.getCurrentPosition(this.showPosition),
                 callback(this.state.crimeLocations))
-        
+       
     }
     showPosition = (position) => {
         this.setState({usrLocation:{lat:position.coords.latitude,lng:position.coords.longitude}}, 
@@ -155,6 +158,7 @@ class Navigation extends React.Component{
             [name]: value
         });
     }
+
     handleFormSubmit = event => {
         event.preventDefault();
         const address = this.state.destination;
@@ -170,24 +174,64 @@ class Navigation extends React.Component{
     }
       
     render() {
+
     return (
     
         <div className="container"
         //  style={containerStyles}
          >
 
+                {/* <Test title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
+            {/* <NewsFeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
+//                 <Container> 
+//                     <Slider className="slider" title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+                    {/* <div id="testCarousel" className="carousel slide" data-ride="carousel">
+                        <ol className="carousel-indicators">
+                            <li data-target="#carouselIndicators" data-slide-to="0" className="active"></li>
+                            <li data-target="#carouselIndicators" data-slide-to="1"></li>
+                        </ol>
+                        <div className="carousel-inner">
+                            <div className="carousel-item active">
+                                <Test title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+                            </div>
+                            <div className="carousel-item">
+                                <Destination />
+                            </div>
+                        </div>
+                        <a className="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
+                            <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span className="sr-only">Previous</span>
+                        </a>
+                        <a className="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
+                            <span className="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span className="sr-only">Next</span>
+                        </a>
+                    </div> */}
+                    {/* <Row>
+                       <Col>
+                         <History />
+                       </Col>
+                        <Col>
+                         <Destination/>
+                        </Col>
+                    </Row> */}
+            
+
                 <Container> 
                     <Slider className="slider" crimeNews={this.state.crimeNews} />
                     <Destination handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
                     <Maps 
                         coor={
+
                         this.state.crimeLocations.map(function(item){
                         return {lat:item.latitude, lng:item.longitude}
                         })}
                         usrLocale={this.state.usrLocation} 
                         google={this.props.google}
+
                     >    
                     </Maps> 
+
                     </Container>   
                       
         </div>

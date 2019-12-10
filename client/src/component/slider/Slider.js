@@ -3,7 +3,6 @@ import {Carousel} from "react-bootstrap"
 import Test from "../Test";
 import Destination from "../Destination";
 
-
 function Slider(props){
         return (
             <div className="slider-container">
@@ -19,3 +18,4 @@ function Slider(props){
 }
 
 export default Slider;
+
