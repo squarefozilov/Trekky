@@ -97,7 +97,8 @@ class Navigation extends React.Component{
         this.state = {
             crimeLocations:[],
             usrLocation:[],
-            crimeNews: [] || 'Loading...'
+            crimeNews: [] || 'Loading...',
+            destination: ""
         }
         this.loadCrimeLocale = this.loadCrimeLocale.bind(this)
         this.grabCrimeData = this.grabCrimeData.bind(this)
@@ -146,6 +147,18 @@ class Navigation extends React.Component{
     // componentWillUnmount = () => {
     //     window.removeEventListener('onbeforeunload', navigator.geolocation.clearWatch());
     // }
+
+    handleInputChange = event => {
+        const name = event.target.name;
+        const value = event.target.value;
+        this.setState({
+            [name]: value
+        });
+    }
+    handleFormSubmit = event => {
+        event.preventDefault();
+        // Add function to find route for user.
+    }
       
     render() {
     return (
@@ -156,7 +169,7 @@ class Navigation extends React.Component{
 
                 <Container> 
                     <Slider className="slider" crimeNews={this.state.crimeNews} />
-                    <Destination />
+                    <Destination handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
                     <Maps 
                         coor={
                         this.state.crimeLocations.map(function(item){
@@ -164,9 +177,8 @@ class Navigation extends React.Component{
                         })}
                         usrLocale={this.state.usrLocation} 
                         google={this.props.google}
-                    >
-                        
-                        </Maps> 
+                    >    
+                    </Maps> 
                     </Container>   
                       
         </div>

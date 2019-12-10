@@ -5,9 +5,7 @@ import Destination from "../Destination";
 
 
 function Slider(props){
-    console.log(`PROOOOOOOOOPPPPPPSSSS------>`,props)
         return (
-            // props.crimeNews ? <div>Loading...</div> : 
             <div className="slider-container">
                 <Carousel>
                     {props.crimeNews.map(news => (
