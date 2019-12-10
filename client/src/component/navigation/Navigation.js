@@ -61,7 +61,7 @@ class Navigation extends React.Component{
     // }
       
 render(){
-     console.log(navigator)
+    
     return (
     
         <div className="container"
@@ -102,7 +102,7 @@ render(){
                         </Col>
                     </Row> */}
                     <Maps 
-                        coor={
+                        coor = {
                         this.state.crimeLocations.map(function(item){
                         return {lat:item.latitude, lng:item.longitude}
                         })}
