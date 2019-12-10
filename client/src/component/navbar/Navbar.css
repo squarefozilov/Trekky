@@ -6,7 +6,7 @@
 
 .navbar-dark{
     width:100%;
-    background-color:rgb(9, 104, 182)!important;
+    background-color:rgb(27, 135, 223)!important;
 }
 
 .navbar-brand {
@@ -25,8 +25,8 @@
     }
     .navbar-dark{
         height:10%;
-        background-color: #333;
-        /* overflow: hidden; */
+        /* background-color: #333; */
+        overflow: hidden;
         position: fixed;
         bottom: 0;
         right:0;
@@ -53,7 +53,7 @@ ul{
     margin:0;
     padding: 0;
     display:flex;
-    height:1rem;
+    height:3.5rem;
 }
 
 ul a 
