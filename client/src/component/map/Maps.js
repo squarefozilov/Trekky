@@ -21,13 +21,11 @@ class Maps extends React.Component {
     scaledSize: new this.props.google.maps.Size(40, 40)
   }
 
-  someFunc(mapProps, map){
+  someFunc = (mapProps, map) => {
     console.log("mapProps", mapProps)
     console.log("map ", map)
 
-    this.setState({map:map},function(){
-      console.log(map)
-    })
+    // this.setState({map:map})
     // this.setState({map:mapProps} , function(){
     //   console.log("Map ",this.state.map)
     // })
@@ -46,8 +44,7 @@ class Maps extends React.Component {
     }
     directionsService.route(request, (res, status) => {
       if (status === 'OK'){
-        console.log("this", this)
-        // console.log("res",res)
+        // console.log(this.state)
         directionsRenderer.setDirections(res);
       } else {
         console.log("error ", status)
