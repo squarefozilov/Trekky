@@ -55,6 +55,7 @@ class Destination extends Component{
         fromlocation: "", 
         tolocation: "" 
       })
+      window.location.reload(false);
     })
   }
 

@@ -20,18 +20,19 @@ class Login extends Component {
   }
   onSubmit(e) {
     e.preventDefault()
-    
-    const user = {
-      email: this.state.email,
-      password: this.state.password
-    }
+      if(this.state.email !== "" && this.state.email !==""){
+        const user = {
+          email: this.state.email,
+          password: this.state.password
+        }
 
-    login(user).then(res => {
-      if (res) {
-        this.props.history.push(`/profile`)
-        window.location.reload(false);
+        login(user).then(res => {
+          if (res) {
+            this.props.history.push(`/profile`)
+            window.location.reload(false);
+          }
+        })
       }
-    })
   }
 
   render() {

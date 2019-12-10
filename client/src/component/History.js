@@ -2,8 +2,8 @@ import React, { Component} from "react";
 import axios from 'axios'
 import jwt_decode from 'jwt-decode';
 class History extends Component{
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             history : []
         }
@@ -15,8 +15,9 @@ class History extends Component{
          console.log("-----"+ decoded._id);
          axios.get('/usersearches/'+decoded._id)
         .then(response => {
-          console.log("historyArrat",response.data);
+         // console.log("historyArrat",response.data);
           this.setState({history : response.data})
+          console.log(this.state.history);
           //console.log(response[0]._id, "2222")
         })
         .catch(error => {
@@ -24,24 +25,24 @@ class History extends Component{
         });
       }
 
+      showHistory(){
+          return(
+              <div>
+                  
+              </div>
+          )
+      }
+
+
     render(){
 
         return (
             <div>
-                 
-                <br></br>
-                <table className="table">
-                    <thead>
-                        <tr>
-                            <th scope="col">History</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-        <td>Historying from DB{this.gethistory}</td>
-                        </tr>
-                    </tbody>
-                </table>
+            
+            {
+            this.state.history.map(data => <div> {data.to} {data.tolocation} {data.date}</div>)
+            } 
+                   
             </div>
         );
 
