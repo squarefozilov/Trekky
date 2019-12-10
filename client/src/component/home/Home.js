@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import './Home.css';
-
+import {Carousel} from "react-bootstrap";
 
 class Home extends Component{
     render(){
@@ -13,19 +13,16 @@ class Home extends Component{
                 <button className="btn btn-success">Sign up for free!</button>
             </div>
             <div className="description">
-                <div className="row">
-                    <div className="col-6 how-to-use">
-                        
+                <Carousel className="crs">
+                    <Carousel.Item>
+                        {/* Need to make styles to make the size fixed. */}
                         Trekky allows you to track recent crimes committed around you, in order to find the safest routes to travel within the city.
-                        
-
-
-                    </div>
-                    
-                    <div className="col-6 map-screenshot">
+                    </Carousel.Item>
+                    <Carousel.Item>
                         <img src="https://iglax.org/wp-content/uploads/2014/12/placeholder-Copy-8-1.png" alt=""></img>
-                    </div>
-                </div>
+                    </Carousel.Item>
+                </Carousel>
+                
             </div>
         </div>
     )
