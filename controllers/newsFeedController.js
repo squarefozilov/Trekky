@@ -19,7 +19,9 @@ module.exports = {
                 })
             }
         })
-        res.json(results[0]);
+        let resultsList = [];
+        resultsList.push(results[0],results[2],results[4],results[6],results[8]);
+        res.json(resultsList);
         
         })
         
