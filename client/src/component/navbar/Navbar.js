@@ -1,15 +1,25 @@
 import React from "react";
 import {Link} from "react-router-dom";
+ 
+import { Redirect } from 'react-router-dom'
 // import styled from 'styled-components';
 import "./Navbar.css"
 import {Row,Container,Col } from 'reactstrap';
 
 class Navbar extends React.Component{
     logOut(e) {
+      try {
+
         e.preventDefault()
         localStorage.removeItem('usertoken')
         this.props.history.push(`/`)
+      }catch{
+        return <Redirect to='/' />
+      }
+       
     }
+
+    
 
     render (){
       const loginRegLink = (
@@ -56,21 +66,6 @@ class Navbar extends React.Component{
                 <Col>
                   <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
                       Map
-                  </Link>
-                </Col>
-                <Col>
-                  <Link to="/login" className="nav-link">
-                      Login
-                  </Link>
-                </Col>
-                <Col>
-                  <Link to="/signup" className="nav-link">
-                    Register
-                  </Link>
-                </Col>
-                <Col> 
-                  <Link to="/" className="nav-link">
-                    User
                   </Link>
                 </Col>
               </Row>

@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
 import Map from '../component/Navigation'
+import { Redirect } from 'react-router-dom'
+
 class Profile extends Component {
   constructor() {
     super()
@@ -8,9 +10,16 @@ class Profile extends Component {
       first_name: '',
       last_name: '',
       email: '',
-      errors: {}
+      errors: {},
+      redirect: false
+
     }
    
+  }
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
   }
 
   refresh(){
@@ -24,16 +33,20 @@ class Profile extends Component {
   }
 
   componentDidMount() {
-    const token = localStorage.usertoken
-   // console.log(token);
-    const decoded = jwt_decode(token)
-    console.log("-----"+ decoded._id);
-    this.setState({
-     // _id : decoded.decoded._id,
-      first_name: decoded.first_name,
-      last_name: decoded.last_name,
-      email: decoded.email
-    })
+    try{
+          const token = localStorage.usertoken
+        // console.log(token);
+          const decoded = jwt_decode(token)
+          console.log("-----"+ decoded._id);
+          this.setState({
+          // _id : decoded.decoded._id,
+            first_name: decoded.first_name,
+            last_name: decoded.last_name,
+            email: decoded.email
+          })
+    }catch{
+      return <Redirect to='/' />
+    }
   }
 
   render() {
