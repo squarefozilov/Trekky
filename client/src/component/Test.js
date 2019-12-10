@@ -3,7 +3,7 @@ import React from "react"
 function Test(props){
     return (
         <div>
-            <div >
+            <div classname="card">
                 <div className="card-header">
                     {props.title}
                 </div>
