@@ -15,11 +15,14 @@ class Home extends Component{
             <div className="description">
                 <Carousel className="crs">
                     <Carousel.Item>
-                        {/* Need to make styles to make the size fixed. */}
-                        Trekky allows you to track recent crimes committed around you, in order to find the safest routes to travel within the city.
+                        <img src={require("./pics/1111.png")}></img>
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img src="https://iglax.org/wp-content/uploads/2014/12/placeholder-Copy-8-1.png" alt=""></img>
+                        <img src={require("./pics/0kj1.png")}></img>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        {/* Need to make styles to make the size fixed. */}
+                        Trekky allows you to track recent crimes committed around you, in order to find the safest routes to travel within the city.
                     </Carousel.Item>
                 </Carousel>
                 
