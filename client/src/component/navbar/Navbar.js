@@ -13,41 +13,46 @@ class Navbar extends React.Component{
 
     render (){
       const loginRegLink = (
-          <ul className="navbar-nav"  style={{ padding: 0}}>
-            <li className="nav-item">
-                <Link to="/login" className="nav-link"style={{ padding: 0}}>
-                  Login
-                </Link>
-            </li>
-            <li className="nav-item">
-                <Link to="/signup" className="nav-link" style={{ padding: 0}}>
-                  Register
-                </Link> 
-            </li>
-          </ul>  
+        <ul className="navbar-nav ml-auto">
+        <Container>
+          <Row>
+            <Col>
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
+            </Col>
+            <Col>
+              <Link to="/signup" className="nav-link">
+                Register
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+      </ul>
         )
         const userLink = (
-          <ul className="navbar-nav"  style={{ padding: 0}}>
-            <li className="nav-item">
-                <Link to="/" className="nav-link" style={{ padding: 0}}>
+          <ul className="navbar-nav ml-auto">
+            <Container>
+              <Row>
+                <Col>
+                <Link to="/" className="nav-link">
                   User
                 </Link>
-            </li>
-            <li className="nav-item">
-                <a href="#" onClick={this.logOut.bind(this)} className="nav-link" style={{ padding: 0}}>
-                Logout
-              </a>
-            </li>
+                </Col>
+                <Col>
+                  <a href="#" onClick={this.logOut.bind(this)} className="nav-link">
+                    Logout
+                  </a>
+                </Col>
+              </Row>
+            </Container>
           </ul>
         )
 
-    return (
-     
-      <nav className="navbar navbar-dark bg-dark" style={{ padding: 0}}>
-        
-          <a className="navbar-brand" href="/">  &nbsp;&nbsp; Trekky </a>
-          <ul className="navbar-nav"  style={{ padding: 0}} style={{ textAlign: "left "}}>
-            
+    return (      
+      <nav className="navbar navbar-dark bg-dark custom">
+          <a className="navbar-brand" href="/">Trekky</a>
+          <ul className="navbar-nav mr-auto">
             <Container>
               <Row >
                 <Col>
@@ -61,11 +66,10 @@ class Navbar extends React.Component{
                   </Link>
                 </Col>
                 <Col> 
-                  <Link to="/" className="nav-link" style={{ padding: 0}}>
-                    User
+                  <Link to="/" className="nav-link">
+                    Profile
                   </Link>
                 </Col>
-                
               </Row>
             </Container>
           </ul>

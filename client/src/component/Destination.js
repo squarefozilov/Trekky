@@ -1,4 +1,5 @@
 import React from 'react';
+import "./Destination.css";
 
 let jumboStyles = {
     margin:"auto",
@@ -8,10 +9,11 @@ let jumboStyles = {
 };
 
 class Destination extends React.Component{
+ 
     render(){
         return(
-            <div className="row">
-                <div className="jumbotron2 col-7" style={jumboStyles}>
+            <div className="row dest">
+                <div className="jumbotron col-7" style={jumboStyles}>
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <span className="input-group-text">From</span>
