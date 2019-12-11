@@ -13,31 +13,39 @@ class Navbar extends React.Component{
 
     render (){
       const loginRegLink = (
-          <ul className="navbar-nav">
-            <li className="nav-item">
-                <Link to="/login" className="nav-link">
-                  Login
-                </Link>
-            </li>
-            <li className="nav-item">
-                <Link to="/signup" className="nav-link">
-                  Register
-                </Link> 
-            </li>
-          </ul>  
+        <ul className="navbar-nav ml-auto">
+        <Container>
+          <Row>
+            <Col>
+            <Link to="/login" className="nav-link">
+              Login
+            </Link>
+            </Col>
+            <Col>
+              <Link to="/signup" className="nav-link">
+                Register
+              </Link>
+            </Col>
+          </Row>
+        </Container>
+      </ul>
         )
         const userLink = (
-          <ul className="navbar-nav">
-            <li className="nav-item">
+          <ul className="navbar-nav ml-auto">
+            <Container>
+              <Row>
+                <Col>
                 <Link to="/" className="nav-link">
                   User
                 </Link>
-            </li>
-            <li className="nav-item">
-                <a href="#" onClick={this.logOut.bind(this)} className="nav-link">
-                Logout
-              </a>
-            </li>
+                </Col>
+                <Col>
+                  <a href="#" onClick={this.logOut.bind(this)} className="nav-link">
+                    Logout
+                  </a>
+                </Col>
+              </Row>
+            </Container>
           </ul>
         )
 
@@ -45,7 +53,7 @@ class Navbar extends React.Component{
       
       <nav className="navbar navbar-dark bg-dark">
           <a className="navbar-brand" href="/">Trekky</a>
-          <ul className="navbar-nav">
+          <ul className="navbar-nav mr-auto">
             <Container>
               <Row>
                 <Col>
@@ -60,10 +68,9 @@ class Navbar extends React.Component{
                 </Col>
                 <Col> 
                   <Link to="/" className="nav-link">
-                    User
+                    Profile
                   </Link>
                 </Col>
-                
               </Row>
             </Container>
           </ul>
