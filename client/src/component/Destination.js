@@ -7,7 +7,10 @@ let jumboStyles = {
     padding:"10px",
 };
 
+
+
 class Destination extends React.Component{
+ 
     render(){
         return(
             <div className="row">
