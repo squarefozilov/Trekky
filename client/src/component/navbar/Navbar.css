@@ -6,7 +6,10 @@
 
 .navbar-dark{
     width:100%;
-    background-color:rgb(27, 135, 223)!important;
+    padding-right: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    /* background-color:rgb(27, 135, 223)!important; */
 }
 
 .navbar-brand {
@@ -89,6 +92,7 @@ ul a:hover {
     color:rgb(80, 140, 189);
 }
 }
+
 
 @media (min-width: 377px) and (max-width: 412px) { 
     .navbar-dark{
