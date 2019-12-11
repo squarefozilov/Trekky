@@ -11,13 +11,13 @@ class Destination extends React.Component{
     render(){
         return(
             <div className="row">
-                <div className="jumbotron col-7" style={jumboStyles}>
+                <div className="jumbotron2 col-7" style={jumboStyles}>
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <span className="input-group-text">From</span>
                         </div>
                         <input type="text" className="form-control" placeholder="From.."></input>
-                    </div><br></br>
+                    </div><br />
                     <div className="input-group">
                         <div className="input-group-prepend">
                             <span className="input-group-text">To</span>
@@ -30,10 +30,13 @@ class Destination extends React.Component{
                         className="form-control" 
                         placeholder="Destination"
                         id="destination"></input>
-                    </div><br></br>
-                    <button onClick={this.props.handleFormSubmit} className="btn btn-primary mt-8">
+                    </div><br/>
+                    <div style={{floar:'left'}}>
+                    <button onClick={this.props.handleFormSubmit} className="btn btn-secondary">
                         Go!
                     </button>
+                    </div>
+                  
                 </div>
             </div>
         );

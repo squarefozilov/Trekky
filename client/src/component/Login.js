@@ -39,7 +39,7 @@ class Login extends Component {
         <div className="row">
           <div className="col-md-6 mt-5 mx-auto">
             <form noValidate onSubmit={this.onSubmit}>
-              <h1 className="h3 mb-3 font-weight-normal" style={{"color":"rgb(27, 135, 223"}}>Please sign in</h1>
+              <h1 className="h3 mb-3 font-weight-normal" style={{"color":"black"}}>Please sign in</h1>
               <div className="form-group">
                 <label htmlFor="email">Email address</label>
                 <input
@@ -69,13 +69,7 @@ class Login extends Component {
                 Sign in
               </button>
             </form>
-            <button
-                type="submit"
-                className="btn btn-secondary btn-lg btn-block"
-                style={{"margin":"auto","display":"block","marginTop":"10px"}}
-              >
-                Register
-              </button>
+           
           </div>
         </div>
       </div>

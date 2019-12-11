@@ -170,11 +170,10 @@ class Navigation extends React.Component{
     }
       
     render() {
+        console.log(this.state.crimeNews)
     return (
-    
-        <div className="container"
-        //  style={containerStyles}
-         >
+    //  style={containerStyles}
+        <div className="container">
 
                 <Container> 
                     <Slider className="slider" crimeNews={this.state.crimeNews} />

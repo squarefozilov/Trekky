@@ -5,10 +5,9 @@ function Test(props){
         <div>
             <div classname="card">
                 <div className="card-header">
-                    {props.title}
-                </div>
-                <div className="card-body">
-                    {props.headline}
+                  <h6> {props.title}   {props.headline} </h6> 
+              <br/>
+                   
                 </div>
             </div>
         </div>
@@ -16,3 +15,4 @@ function Test(props){
 }
 
 export default Test
+//  </div> <div className="card-body">

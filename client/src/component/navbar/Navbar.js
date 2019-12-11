@@ -13,28 +13,28 @@ class Navbar extends React.Component{
 
     render (){
       const loginRegLink = (
-          <ul className="navbar-nav">
+          <ul className="navbar-nav"  style={{ padding: 0}}>
             <li className="nav-item">
-                <Link to="/login" className="nav-link">
+                <Link to="/login" className="nav-link"style={{ padding: 0}}>
                   Login
                 </Link>
             </li>
             <li className="nav-item">
-                <Link to="/signup" className="nav-link">
+                <Link to="/signup" className="nav-link" style={{ padding: 0}}>
                   Register
                 </Link> 
             </li>
           </ul>  
         )
         const userLink = (
-          <ul className="navbar-nav">
+          <ul className="navbar-nav"  style={{ padding: 0}}>
             <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/" className="nav-link" style={{ padding: 0}}>
                   User
                 </Link>
             </li>
             <li className="nav-item">
-                <a href="#" onClick={this.logOut.bind(this)} className="nav-link">
+                <a href="#" onClick={this.logOut.bind(this)} className="nav-link" style={{ padding: 0}}>
                 Logout
               </a>
             </li>
@@ -42,24 +42,26 @@ class Navbar extends React.Component{
         )
 
     return (
-      
-      <nav className="navbar navbar-dark bg-dark">
-          <a className="navbar-brand" href="/">Trekky</a>
-          <ul className="navbar-nav">
+     
+      <nav className="navbar navbar-dark bg-dark" style={{ padding: 0}}>
+        
+          <a className="navbar-brand" href="/">  &nbsp;&nbsp; Trekky </a>
+          <ul className="navbar-nav"  style={{ padding: 0}} style={{ textAlign: "left "}}>
+            
             <Container>
-              <Row>
+              <Row >
                 <Col>
-                  <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+                  <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}style={{ padding: 0}}>
                       Home
                   </Link>
                 </Col>
                 <Col>
-                  <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
+                  <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}style={{ padding: 0}}>
                       Map
                   </Link>
                 </Col>
                 <Col> 
-                  <Link to="/" className="nav-link">
+                  <Link to="/" className="nav-link" style={{ padding: 0}}>
                     User
                   </Link>
                 </Col>
@@ -69,9 +71,9 @@ class Navbar extends React.Component{
           </ul>
           {localStorage.usertoken ? userLink : loginRegLink}
 
-      <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
-        <ul className="mobile-nav-buttons">      
-          <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}>
+      <nav className="navbar navbar-dark bg-dark navbar-expand-sm" style={{ padding: 0}}>
+        <ul className="mobile-nav-buttons"  style={{ padding: '0px !important'}}>      
+          <Link to="/" className={window.location.pathname === "/" ? "nav-link active" : "nav-link"} >
             <i className="fas fa-home"></i>
           </Link>
           <Link to="/navigation" className={window.location.pathname === "/navigation" ? "nav-link active" : "nav-link"}>
@@ -83,7 +85,7 @@ class Navbar extends React.Component{
           <Link to="/login" className="nav-link">
             <i className="fas fa-user-lock"></i>
           </Link>
-          <Link to="/signup" className="nav-link">
+          <Link to="/signup" className="nav-link" style={{ padding: 0}}>
             Register
           </Link>
         </ul>

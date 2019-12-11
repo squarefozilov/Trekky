@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import jwt_decode from 'jwt-decode'
+import Map from '../component/navigation/Navigation'
 
 class Profile extends Component {
   constructor() {
@@ -34,14 +35,14 @@ class Profile extends Component {
         <a href="" onClick={this.logOut.bind(this)} className="nav-link">
             Logout
           </a>
-        <div className="jumbotron mt-5">
+        <div className="jumbotron2 mt-5">
           <div className="col-sm-8 mx-auto">
-            <h1 className="text-center">PROFILE</h1>
+            <h6 className="text-center">PROFILE</h6>
           </div>
           <table className="table col-md-6 mx-auto">
             <tbody>
               <tr>
-                <td>Fist Name</td>
+                <td>Fist and Lanst name</td>
                 <td>{this.state.first_name}</td>
               </tr>
               <tr>
@@ -55,6 +56,7 @@ class Profile extends Component {
             </tbody>
           </table>
         </div>
+        <Map></Map>
       </div>
     )
   }

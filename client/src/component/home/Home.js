@@ -9,20 +9,46 @@ class Home extends Component{
         <div className="wrapper">
             <div className="jumbotron">
                 <h1>Trekky</h1>
-                <h2>Dont just find your way. Know your way.</h2>
-                <button className="btn btn-success">Sign up for free!</button>
+               <h2>Trekky allows you to track recent crimes committed around you,
+                        in order to find the safest routes to travel within the city .</h2>
+               <h2>   DONT JUST FIND YOUR WAY. KNOW YOUR WAY. KEEPING PEOPLE SAFE AND INFORMED.</h2>
+             
+              
             </div>
+           
             <div className="description">
+            <p> EXPLORE WHAT'S HAPPENING IN YOUR CITY </p> 
                 <Carousel className="crs">
+
+                <Carousel.Item>
+                        {/* Need to make styles to make the size fixed. */}
+                       
+                      
+                        <img src={require('./pics/1111.png')} />
+                   
+                    </Carousel.Item>
                     <Carousel.Item>
                         {/* Need to make styles to make the size fixed. */}
-                        Trekky allows you to track recent crimes committed around you, in order to find the safest routes to travel within the city.
+                       
+                        <img src={require('./pics/x2200.png')} />
+                      
+                   
                     </Carousel.Item>
                     <Carousel.Item>
-                        <img src="https://iglax.org/wp-content/uploads/2014/12/placeholder-Copy-8-1.png" alt=""></img>
+                   
+                    <img src={require('./pics/0kj1.png')} />
+                       
+                    </Carousel.Item>
+
+                    <Carousel.Item>
+                        {/* Need to make styles to make the size fixed. */}
+                       
+                        <img src={require('./pics/Untitmmmled.png')} />
+                   
                     </Carousel.Item>
                 </Carousel>
-                
+              
+            
             </div>
         </div>
     )
