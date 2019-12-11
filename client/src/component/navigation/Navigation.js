@@ -183,8 +183,8 @@ class Navigation extends React.Component{
 
                 {/* <Test title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
             {/* <NewsFeed title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
-//                 <Container> 
-//                     <Slider className="slider" title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} />
+{/* //                 <Container> 
+//                     <Slider className="slider" title={this.state.crimeNews.title} headline={this.state.crimeNews.headline} /> */}
                     {/* <div id="testCarousel" className="carousel slide" data-ride="carousel">
                         <ol className="carousel-indicators">
                             <li data-target="#carouselIndicators" data-slide-to="0" className="active"></li>
@@ -229,7 +229,11 @@ class Navigation extends React.Component{
                         usrLocale={this.state.usrLocation} 
                         google={this.props.google}
 
-                    >    
+                    >   
+                    {console.log("Destination ", this.state.destination)}
+
+                    {/* {if()
+                    <Marker></Marker>} */}
                     </Maps> 
 
                     </Container>   

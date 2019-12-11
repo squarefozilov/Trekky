@@ -60,7 +60,7 @@ class Maps extends React.Component {
   }
   
     render(){
-      console.log("Google", new this.props.google.maps.DirectionsService())
+       console.log("Structure of of Lat and Lng", this.props.usrLocale )
       
       const crimeIcon = {
         //     // url: "../../nav-icons/crime_icon.jpeg",
