@@ -89,7 +89,7 @@ class Navigation extends React.Component{
         <div className="container">
             <Container> 
                 <Slider className="slider" crimeNews={this.state.crimeNews} />
-                <Destination handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
+                <Destination className="destination" handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
                 <Maps 
                 coor={
                     this.state.crimeLocations.map(function(item){
