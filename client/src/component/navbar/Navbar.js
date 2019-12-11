@@ -51,7 +51,7 @@ class Navbar extends React.Component{
 
     return (
       
-      <nav className="navbar navbar-dark bg-dark">
+      <nav className="navbar navbar-dark bg-dark custom">
           <a className="navbar-brand" href="/">Trekky</a>
           <ul className="navbar-nav mr-auto">
             <Container>
