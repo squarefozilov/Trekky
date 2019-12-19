@@ -75,7 +75,6 @@ app.post('/register', (req, res) => {
     })
       .then(user => {
         if (!user) {
-            
             //console.log(userData);
             userData.password = req.body.password
             Users.create(userData)
@@ -97,8 +96,7 @@ app.post('/register', (req, res) => {
 app.get("/api", (req, res) => {
     Users.find({}).then((result) => {
         res.send(result);
-    })
-    
+    });  
 });
 
 app.post('/login', (req, res) => {

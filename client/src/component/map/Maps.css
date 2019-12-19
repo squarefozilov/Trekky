@@ -1,7 +1,7 @@
 /* I am not sure why I cannot style the maps position in this page. */
 
 .google-map {
-    overflow: hidden;
-    margin:"auto";
+  overflow: hidden;
+  margin:"auto";
   position:relative; 
 }

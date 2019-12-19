@@ -7,7 +7,7 @@ export default {
     },
 
     convertAddToLatLng: function(address){
-        const apiKey ="AIzaSyA-VspoF45DKRHLsuzBL0-hecHDNOUQdOY";
+        const apiKey =process.env.REACT_APP_APIKEY;
         return axios.get("https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key="+apiKey);
     }
 };
