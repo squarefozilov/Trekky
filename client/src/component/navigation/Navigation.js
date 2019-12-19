@@ -8,7 +8,6 @@ import "./Navigation.css";
 import Slider from "../slider/Slider";
 import Destination from "../Destination"
 
-
 class Navigation extends React.Component{
     constructor(props) {
         super(props)
@@ -65,16 +64,18 @@ class Navigation extends React.Component{
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
+        console.log("name ", name)
+        console.log("value ", value)
         this.setState({
             [name]: value
         });
     }
 
-    handleFormSubmit = event => {
+    handleFormSubmit = (event) => {
         event.preventDefault();
         const address = this.state.destination;
         API.convertAddToLatLng(address)
-            .then((res) => {
+            .then((res) => { 
                 let latitude = res.data.results[0].geometry.location.lat;
                 let longitude = res.data.results[0].geometry.location.lng;
                 console.log(`latitude:`,latitude);
@@ -85,6 +86,9 @@ class Navigation extends React.Component{
             })
     }
     render() {
+        console.log("state destination ",this.state.destination);
+        console.log("state destinationLatLng ",this.state.destinationLatLng); 
+        
         return (
         <div className="container">
             <Container> 

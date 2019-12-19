@@ -13,11 +13,10 @@ class Maps extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        map:[]
-        
+        map:[]    
     }
   }
- 
+  // User icon image, sized for the map.
   markerIcon = {
     url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvFiVpCGq6a1uRuvpBvmybCdTrbu-LzbRQyLMF7JR_JUudoEb8FQ&s",
     scaledSize: new this.props.google.maps.Size(40, 40)
@@ -31,7 +30,6 @@ class Maps extends React.Component {
     if(map !== undefined){
     this.setState({map:map})
     }
-    console.log("map in state ", this.state.map)
     let usrDes = this.state.map;
     if(this.props.destination.length !== 0){
     this.calcRoutes(usrDes,lat,lng)
@@ -49,6 +47,11 @@ class Maps extends React.Component {
     let request = {
       origin:start,
       destination: end,
+      waypoints:[
+        {location: 'Hoboken, NJ',
+         stopover:false  
+      }
+      ],
       travelMode: 'WALKING'
     }
     directionsService.route(request, (res, status) => {
@@ -61,12 +64,12 @@ class Maps extends React.Component {
     })
   }
     render(){
-    // This variable renders the criminal icon on the map from a link and sized appropriatly.
+    // This variable holds the crime icon, sized for the map when rendered.
     const crimeIcon = {
       url:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXL8dMbULRMR3YVcdoZKDvHAKDEnyRIqnPx-llmYVULI5oTCTd&s",
       scaledSize: new this.props.google.maps.Size(40, 40)
       }
-    // This variable holds the locations of most current crime locations.
+    // This variable holds the locations of most current crime locations and renders them to the map as markers.
     const crimeLocales = this.props.coor.map(function(item){
           return(
           <Marker 
@@ -82,7 +85,6 @@ class Maps extends React.Component {
             className="google-map"
             google={this.props.google}
             zoom={11}
-            // map={this.props.maps}
             style={mapStyles}
             initialCenter={{lat: 40.7128, lng: -74.0060}}
             onReady={this.setsRoute}
@@ -102,5 +104,5 @@ class Maps extends React.Component {
   };
 
 export default GoogleApiWrapper({
-    apiKey:"AIzaSyBCvx7hjyQuBxMhfkPD_iU1AfxqoZFu-JY"
+    apiKey:process.env.REACT_APP_APIKEY
   })(Maps);
