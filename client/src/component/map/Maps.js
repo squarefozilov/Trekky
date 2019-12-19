@@ -38,6 +38,21 @@ class Maps extends React.Component {
     console.log("map OUTSIDE STATE",map)
   }
 
+  wayPointsObj = () => {
+    let locations = [];
+    // How do I find the crime data that will manipulate the route.
+    // I would need to know the route first to manipulate it.
+    // How does location assess location????? (Answer this question and ur good)
+    // I would need a for loop to push each object to the locations array.
+    // Can I return the locations array as just an array? (YES)
+    // Now I need to take into consideratin where the crimes happened around the user and give an alert.
+    locations.push({
+      location:"Hoboken,NJ",
+      stopover:false
+    }); 
+    return (locations)
+  }
+
   directionsRenderer = new this.props.google.maps.DirectionsRenderer();
   calcRoutes = (map,lat,lng) => {
     let directionsService = new this.props.google.maps.DirectionsService();
@@ -47,16 +62,14 @@ class Maps extends React.Component {
     let request = {
       origin:start,
       destination: end,
-      waypoints:[
-        {location: 'Hoboken, NJ',
-         stopover:false  
-      }
-      ],
+      optimizeWaypoints:true,
+      waypoints:this.wayPointsObj(),
       travelMode: 'WALKING'
     }
     directionsService.route(request, (res, status) => {
       if (status === 'OK'){
-        console.log("RES ",res)
+        var testWayPnt = res.routes[0].legs[0].via_waypoint[0];
+        console.log("RES ",res.routes[0].legs[0].via_waypoint[0])
         this.directionsRenderer.setDirections(res);
       } else {
         console.log("error ", status)
