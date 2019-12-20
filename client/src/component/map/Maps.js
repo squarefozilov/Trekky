@@ -40,14 +40,19 @@ class Maps extends React.Component {
 
   wayPointsObj = () => {
     let locations = [];
-    // How do I find the crime data that will manipulate the route.
-    // I would need to know the route first to manipulate it.
-    // How does location assess location????? (Answer this question and ur good)
-    // I would need a for loop to push each object to the locations array.
-    // Can I return the locations array as just an array? (YES)
+    console.log("Crime data =>>", this.props.criminalLocales);
+    console.log("User location =>>", this.props.usrCurrentLocation);
+    // How do I find the crime data that will manipulate the route. (DONE)
+    // How does location assess location????? (FORMAT LIKE THE POST OFFICE.Street,borough,city,zip)
+    // I would need a for loop to push each object to the locations array. (FILTER METHOD)
+    // Can I return the locations array as just an array? (YES Done already and it works)
     // Now I need to take into consideratin where the crimes happened around the user and give an alert.
+    // Based on the crime data the user location needs to be mapped in terms of miles in relation to this data, so that we know how to route around the criminal locations.
+    // I can use a filter method that creates a new array of nearest criminal locations.
+    // then check the waypoint against all crime data locations nearest the the user.
+    // The create a waypoint that is not near any of the crime locations nearest the user. 25 is the limit!
     locations.push({
-      location:"Hoboken,NJ",
+      location:"42nd street Broadway,new york, ny ",
       stopover:false
     }); 
     return (locations)
