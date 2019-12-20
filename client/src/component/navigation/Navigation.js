@@ -102,6 +102,8 @@ class Navigation extends React.Component{
                 usrLocale={this.state.usrLocation} 
                 google={this.props.google}
                 destination={this.state.destinationLatLng}
+                criminalLocales={this.state.crimeLocations}
+                usrCurrentLocation={this.state.usrLocation}
                 > 
                 </Maps> 
             </Container>          
