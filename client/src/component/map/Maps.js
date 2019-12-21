@@ -53,7 +53,7 @@ class Maps extends React.Component {
     // The create a waypoint that is not near any of the crime locations nearest the user. 25 is the limit!
     locations.push({
       location:"42nd street Broadway,new york, ny ",
-      stopover:false
+      stopover:false,
     }); 
     return (locations)
   }
