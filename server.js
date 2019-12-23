@@ -12,6 +12,7 @@ process.env.SECRET_KEY = 'secret';
 const crimeLocationsController = require('./controllers/crimeLocationController');
 const newsFeedController = require('./controllers/newsFeedController');
 const geocodeController = require('./controllers/geocodeController');
+const polyline = require( 'google-polyline' )
 
 // Defining middleware
 app.use(express.urlencoded({ extended: true }));
@@ -157,6 +158,13 @@ app.get("/apikey", (req,res) => {
 });
 
 app.get("/scrapeNews",newsFeedController.getScrapedNews);
+
+app.get('/polyline/decoder/:id', async (req,res) => {
+  let poly = req.params.id;
+  let  newPoly = polyline.decode(poly);
+   res.json(await poly)
+
+})
   
 // Send every other request to the react app.
 app.get("*", (req, res) => {
