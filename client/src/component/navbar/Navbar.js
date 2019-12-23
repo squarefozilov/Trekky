@@ -1,6 +1,5 @@
 import React from "react";
 import {Link} from "react-router-dom";
-// import styled from 'styled-components';
 import "./Navbar.css"
 import {Row,Container,Col } from 'reactstrap';
 
@@ -99,6 +98,4 @@ class Navbar extends React.Component{
     );
     }
 }
-
-
 export default Navbar;

@@ -78,17 +78,14 @@ class Navigation extends React.Component{
             .then((res) => { 
                 let latitude = res.data.results[0].geometry.location.lat;
                 let longitude = res.data.results[0].geometry.location.lng;
-                console.log(`latitude:`,latitude);
-                console.log(`longitude:`,longitude);
+                // console.log(`latitude:`,latitude);
+                // console.log(`longitude:`,longitude);
                 this.setState({destinationLatLng:{latitude,longitude}},
                 () => {console.log("Destination in STate!",this.state.destinationLatLng)}
                 )
             })
     }
     render() {
-        console.log("state destination ",this.state.destination);
-        console.log("state destinationLatLng ",this.state.destinationLatLng); 
-        
         return (
         <div className="container">
             <Container> 
