@@ -159,6 +159,7 @@ app.get("/apikey", (req,res) => {
 
 app.get("/scrapeNews",newsFeedController.getScrapedNews);
 
+// Can use the geometry object.
 app.get('/polyline/decoder/:id', async (req,res) => {
   let poly = req.params.id;
   let  newPoly = polyline.decode(poly);
