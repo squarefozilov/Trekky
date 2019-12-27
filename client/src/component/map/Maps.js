@@ -1,6 +1,6 @@
 import React from 'react';
-import API from '../../utils/API';
-import axios from 'axios';
+// import API from '../../utils/API';
+// import axios from 'axios';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import './Maps.css';
 
@@ -15,7 +15,8 @@ class Maps extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-        map:[]    
+        map:[],
+        safeRoute:[]    
     }
   }
   // User icon image, sized for the map.
@@ -66,19 +67,12 @@ class Maps extends React.Component {
   calcRoutes = (map,usrLocale,lat,lng) => {
     let directionsService = new this.props.google.maps.DirectionsService();
     let safePathCoordinates = []
+
     // User Location
-    safePathCoordinates.push( new this.props.google.maps.LatLng(usrLocale.lat,usrLocale.lng));
-    // Destination
-    safePathCoordinates.push( new this.props.google.maps.LatLng(lat,lng));
-    console.log("safePathCoordinates  ==> ", safePathCoordinates)
-    
-    let safePath = new this.props.google.maps.Polyline({
-      optimizeWaypoints:true,
-      path: safePathCoordinates,
-      strokeColor: '#FF0000',
-      strokeOpacity: 1.0,
-      strokeWeight: 2
-    });
+    //  safePathCoordinates.push( new this.props.google.maps.LatLng(usrLocale.lat,usrLocale.lng));
+
+    // // // Destination
+    // safePathCoordinates.push(new this.props.google.maps.LatLng(lat,lng))
 
     let start = usrLocale;
     let end = new this.props.google.maps.LatLng(lat,lng);
@@ -86,55 +80,35 @@ class Maps extends React.Component {
       origin:start,
       destination: end,
       optimizeWaypoints:true,
-      // waypoints:this.wayPointsObj(),
       travelMode: 'WALKING'
     }
 
     directionsService.route(request, (res, status) => {
       if (status === 'OK'){
         let polyline = res.routes[0].overview_polyline;
-        
-        // console.log("polyline ",polyline)
-        // console.log("RES.routes ",res.routes[0].overview_polyline);
-        API.decodePolyline(JSON.stringify(polyline))
-        .then(async (res) => {
-           console.log(await res)
-        })
-        .catch((err) => {console.log(err)})
-
-        // axios.get("/polyline/decoder")
-        // .then((res) => {console.log(res)})
-        // .catch((err) => {console.log(err)})
-
-        // console.log("RES.routes ",res.routes[0].legs[0].steps[0].path[0].lng);
-        // console.log(PolylineEncoding.decode(routes.overview_Polyline.getEncodedPath()))
+        let decodedPoly = this.props.google.maps.geometry.encoding.decodePath(polyline);
+        decodedPoly.forEach((item) => {
+           safePathCoordinates.push(new this.props.google.maps.LatLng(item.lat,item.lng))
+        });
+  //  safePathCoordinates.push( new this.props.google.maps.LatLng(usrLocale.lat,usrLocale.lng));
+  //  safePathCoordinates.push(new this.props.google.maps.LatLng(lat,lng));
+    console.log("safePathCoordinates ",safePathCoordinates);
+    // let safePath = new this.props.google.maps.Polyline({
+    //   // optimizeWaypoints:true,
+    //   path:safePathCoordinates,
+    //   strokeColor:'#FF0000',
+    //   strokeOpacity: 1.0,
+    //   strokeWeight: 2
+    // });
+    
+    // safePath.setMap(map);
+    
+   
       } else {
         console.log("error ", status)
       }
     })
-
-    safePath.setMap(map);
-
-    // let directionsService = new this.props.google.maps.DirectionsService();
-    // this.directionsRenderer.setMap(map);
-    // let start = this.props.usrLocale;
-    // let end = new this.props.google.maps.LatLng(lat,lng);
-    // let request = {
-    //   origin:start,
-    //   destination: end,
-    //   optimizeWaypoints:true,
-    //   waypoints:this.wayPointsObj(),
-    //   travelMode: 'WALKING'
-    // }
-    // directionsService.route(request, (res, status) => {
-    //   if (status === 'OK'){
-    //     var testWayPnt = res.routes[0].legs[0].via_waypoint[0];
-    //     console.log("RES ",res.routes[0].legs[0].via_waypoint[0])
-    //     this.directionsRenderer.setDirections(res);
-    //   } else {
-    //     console.log("error ", status)
-    //   }
-    // })
+    
   }
     render(){
     // This variable holds the crime icon, sized for the map when rendered.
