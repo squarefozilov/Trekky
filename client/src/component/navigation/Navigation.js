@@ -6,7 +6,7 @@ import axios from "axios"
 import '../map/Maps.css';
 import "./Navigation.css";
 import Slider from "../slider/Slider";
-import Destination from "../Destination"
+import Destination from "../destination/Destination"
 
 class Navigation extends React.Component{
     constructor(props) {
@@ -50,7 +50,6 @@ class Navigation extends React.Component{
     }
 
     getUsrLocale = (callback) => {
-
         return( navigator.geolocation.getCurrentPosition(this.showPosition),
                 callback(this.state.crimeLocations))
        
@@ -78,8 +77,6 @@ class Navigation extends React.Component{
             .then((res) => { 
                 let latitude = res.data.results[0].geometry.location.lat;
                 let longitude = res.data.results[0].geometry.location.lng;
-                // console.log(`latitude:`,latitude);
-                // console.log(`longitude:`,longitude);
                 this.setState({destinationLatLng:{latitude,longitude}},
                 () => {console.log("Destination in STate!",this.state.destinationLatLng)}
                 )
@@ -96,11 +93,11 @@ class Navigation extends React.Component{
                     this.state.crimeLocations.map(function(item){
                     return {lat:item.latitude, lng:item.longitude}
                     })}
-                usrLocale={this.state.usrLocation} 
-                google={this.props.google}
-                destination={this.state.destinationLatLng}
-                criminalLocales={this.state.crimeLocations}
-                usrCurrentLocation={this.state.usrLocation}
+                    usrLocale={this.state.usrLocation} 
+                    google={this.props.google}
+                    destination={this.state.destinationLatLng}
+                    criminalLocales={this.state.crimeLocations}
+                    usrCurrentLocation={this.state.usrLocation}
                 > 
                 </Maps> 
             </Container>          

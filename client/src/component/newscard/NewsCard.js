@@ -1,6 +1,7 @@
-import React from "react"
+import React from "react";
+import "./NewsCard.css";
 
-function Test(props){
+function NewsCard (props){
     return (
         <div>
             <div classname="card">
@@ -15,4 +16,4 @@ function Test(props){
     )
 }
 
-export default Test
+export default NewsCard;

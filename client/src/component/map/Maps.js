@@ -62,7 +62,6 @@ class Maps extends React.Component {
   
    polyLineClosure = (polylineOptions,map) => {
     let safePath;
-    // safePath.setMap(null)
     safePath = new this.props.google.maps.Polyline(polylineOptions[0]);
     safePath.setMap(map);
    }
