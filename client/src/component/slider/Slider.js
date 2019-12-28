@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {Carousel} from "react-bootstrap"
-import Test from "../Test";
-import Destination from "../Destination";
+import NewsCard from "../newscard/NewsCard";
 import "./Slider.css";
 
 function Slider(props){
@@ -11,7 +10,7 @@ function Slider(props){
                 <Carousel className="slider">
                     {props.crimeNews.map(news => (
                         <Carousel.Item>
-                            <Test title={news.title} headline={news.headline}></Test>
+                            <NewsCard title={news.title} headline={news.headline}></NewsCard>
                         </Carousel.Item>
                     ))}
                 </Carousel>
