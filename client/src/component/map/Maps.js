@@ -1,6 +1,4 @@
 import React from 'react';
-// import API from '../../utils/API';
-// import axios from 'axios';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import './Maps.css';
 
@@ -16,7 +14,7 @@ class Maps extends React.Component {
     super(props)
     this.state = {
         map:[],
-        safeRoute:[]    
+        coords:[]    
     }
   }
   // User icon image, sized for the map.
@@ -44,8 +42,8 @@ class Maps extends React.Component {
 
   wayPointsObj = () => {
     let locations = [];
-    console.log("Crime data =>>", this.props.criminalLocales);
-    console.log("User location =>>", this.props.usrCurrentLocation);
+    // console.log("Crime data =>>", this.props.criminalLocales);
+    // console.log("User location =>>", this.props.usrCurrentLocation);
     // How do I find the crime data that will manipulate the route. (DONE)
     // How does location assess location????? (FORMAT LIKE THE POST OFFICE.Street,borough,city,zip)
     // I would need a for loop to push each object to the locations array. (FILTER METHOD)
@@ -61,52 +59,44 @@ class Maps extends React.Component {
     }); 
     return (locations)
   }
-
-  // directionsRenderer = new this.props.google.maps.DirectionsRenderer();
   
-  calcRoutes = (map,usrLocale,lat,lng) => {
-    let directionsService = new this.props.google.maps.DirectionsService();
-    let safePathCoordinates = []
+   polyLineClosure = (polylineOptions,map) => {
+    let safePath;
+    // safePath.setMap(null)
+    safePath = new this.props.google.maps.Polyline(polylineOptions[0]);
+    safePath.setMap(map);
+   }
 
-    // User Location
-    //  safePathCoordinates.push( new this.props.google.maps.LatLng(usrLocale.lat,usrLocale.lng));
-
-    // // // Destination
-    // safePathCoordinates.push(new this.props.google.maps.LatLng(lat,lng))
-
-    let start = usrLocale;
-    let end = new this.props.google.maps.LatLng(lat,lng);
-    let request = {
-      origin:start,
-      destination: end,
-      optimizeWaypoints:true,
-      travelMode: 'WALKING'
-    }
-
-    directionsService.route(request, (res, status) => {
-      if (status === 'OK'){
-        let polyline = res.routes[0].overview_polyline;
-        let decodedPoly = this.props.google.maps.geometry.encoding.decodePath(polyline);
-        decodedPoly.forEach((item) => {
-           safePathCoordinates.push(new this.props.google.maps.LatLng(item.lat,item.lng))
-        });
-  //  safePathCoordinates.push( new this.props.google.maps.LatLng(usrLocale.lat,usrLocale.lng));
-  //  safePathCoordinates.push(new this.props.google.maps.LatLng(lat,lng));
-    console.log("safePathCoordinates ",safePathCoordinates);
-    // let safePath = new this.props.google.maps.Polyline({
-    //   // optimizeWaypoints:true,
-    //   path:safePathCoordinates,
-    //   strokeColor:'#FF0000',
-    //   strokeOpacity: 1.0,
-    //   strokeWeight: 2
-    // });
-    
-    // safePath.setMap(map);
-    
-   
+    calcRoutes = (map,usrLocale,lat,lng) => {
+      let polylineOptions = [];
+      let directionsService = new this.props.google.maps.DirectionsService();
+      let start = usrLocale;
+      let end = new this.props.google.maps.LatLng(lat,lng);
+      let request = {
+        origin:start,
+        destination: end,
+        optimizeWaypoints:true,
+        travelMode: 'WALKING',
+        provideRouteAlternatives:true
+      }
+      directionsService.route(request, (res, status) => {
+        let points = []
+        if (status === 'OK'){
+          points = res.routes[0].overview_path;
+          
+           polylineOptions.push( {
+            path: points,
+            geodesic: true,
+            strokeColor: '#FF0000',
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+            map:map
+          })
       } else {
         console.log("error ", status)
       }
+      this.polyLineClosure(polylineOptions,map)
+     
     })
     
   }
