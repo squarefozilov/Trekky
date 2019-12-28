@@ -89,10 +89,9 @@ class Navigation extends React.Component{
                 <Slider className="slider" crimeNews={this.state.crimeNews} />
                 <Destination className="destination" handleInputChange={this.handleInputChange} handleFormSubmit={this.handleFormSubmit} />
                 <Maps 
-                coor={
+                    coor={
                     this.state.crimeLocations.map(function(item){
-                    return {lat:item.latitude, lng:item.longitude}
-                    })}
+                    return {lat:item.latitude, lng:item.longitude}})}
                     usrLocale={this.state.usrLocation} 
                     google={this.props.google}
                     destination={this.state.destinationLatLng}
