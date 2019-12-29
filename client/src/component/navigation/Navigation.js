@@ -28,7 +28,6 @@ class Navigation extends React.Component{
         await this.getUsrLocale(this.loadCrimeLocale)
         await this.grabCrimeData()
         await this.loadCrimeLocale(this.state.crimeLocations)
-        // await this.getCrimeNews()
         const crimeNews = await axios.get("/scrapeNews")
         this.setState({
             crimeNews : crimeNews.data
@@ -63,11 +62,10 @@ class Navigation extends React.Component{
     handleInputChange = event => {
         const name = event.target.name;
         const value = event.target.value;
-        console.log("name ", name)
-        console.log("value ", value)
         this.setState({
             [name]: value
         });
+
     }
 
     handleFormSubmit = (event) => {
@@ -81,6 +79,7 @@ class Navigation extends React.Component{
                 () => {console.log("Destination in STate!",this.state.destinationLatLng)}
                 )
             })
+            console.log("target ", event.target)
     }
     render() {
         return (

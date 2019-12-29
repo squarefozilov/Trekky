@@ -6,16 +6,18 @@ module.exports = {
     getScrapedNews:function (req,res) {
         axios.get("https://www.nydailynews.com/new-york/nyc-crime/").then(function(response){
           var $ = cheerio.load(response.data);
-        // console.log(response.data);
+        
         let results = [];
       
         $(".crd--cnt").each(function(i, element){
             var title = $(element).find(".r-mb").find("a").text();
             var headline = $(element).find("p.preview-text").text();
-            if(title !== "" && headline !== ""){
+            var href = $(element).find(".r-mb").find("a").attr("href");
+            if(title !== "" && headline !== "" && href !== ""){
                 results.push({
                     title:title,
-                    headline: headline
+                    headline: headline,
+                    href:href
                 })
             }
         })

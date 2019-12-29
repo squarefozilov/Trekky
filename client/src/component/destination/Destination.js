@@ -9,9 +9,17 @@ let jumboStyles = {
 };
 
 class Destination extends React.Component{
- 
+    // clearForm = (cb) => {
+    //     this._input.focus();
+    //     this._input.value = "";
+    //     cb()
+        
+    // }
+
     render(){
+       
         return(
+            
             <div className="row dest">
                 <div className="jumbotron col-7" style={jumboStyles}>
                     <div className="input-group">
@@ -25,15 +33,17 @@ class Destination extends React.Component{
                             <span className="input-group-text">To</span>
                         </div>
                         <input
-                        onChange={this.props.handleInputChange}
-                        value={this.props.value}
-                        name="destination"
-                        type="text" 
-                        className="form-control" 
-                        placeholder="Destination"
-                        id="destination"></input>
+                            onChange={this.props.handleInputChange}
+                            value={this.props.value}
+                            name="destination"
+                            type="text" 
+                            className="form-control" 
+                            placeholder="Destination"
+                            id="destination"
+                            ref={(el) => {this._input = el}}
+                        ></input>
                     </div><br></br>
-                    <button onClick={this.props.handleFormSubmit} className="btn btn-primary mt-8">
+                    <button onClick={this.props.handleFormSubmit}  className="btn btn-primary mt-8">
                         Go!
                     </button>
                 </div>
