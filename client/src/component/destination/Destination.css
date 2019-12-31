@@ -1,5 +1,10 @@
-@media only screen and (max-width: 600px){
+/* @media only screen and (max-width: 600px){
     .dest{
-        visibility: hidden;
+        display: none;
     }
+} */
+
+.row-dest{
+    /* width:100%; */
+    position:static;
 }
