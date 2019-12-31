@@ -23,10 +23,10 @@ class Destination extends React.Component{
             <div className="row dest">
                 <div className="jumbotron col-7" style={jumboStyles}>
                     <div className="input-group">
-                        <div className="input-group-prepend">
+                        {/* <div className="input-group-prepend">
                             <span className="input-group-text">From</span>
                         </div>
-                        <input type="text" className="form-control" placeholder="From.."></input>
+                        <input type="text" className="form-control" placeholder="From.."></input> */}
                     </div><br></br>
                     <div className="input-group">
                         <div className="input-group-prepend">

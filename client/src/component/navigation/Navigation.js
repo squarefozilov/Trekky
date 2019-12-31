@@ -6,7 +6,7 @@ import axios from "axios"
 import '../map/Maps.css';
 import "./Navigation.css";
 import Slider from "../slider/Slider";
-import Destination from "../destination/Destination"
+import Destination from "../destination/Destination";
 
 class Navigation extends React.Component{
     constructor(props) {

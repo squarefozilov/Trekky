@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {Carousel} from "react-bootstrap"
 import NewsFeed from "../newsfeed/NewsFeed";
 import "./Slider.css";
