@@ -4,7 +4,10 @@
     }
 } */
 
-.row-dest{
-    /* width:100%; */
+/* .row-dest{
+    width:100%;
     position:static;
+} */
+.dest {
+    display: none;
 }
