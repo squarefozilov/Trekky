@@ -38,6 +38,9 @@
   .container:hover .slider {
       visibility:hidden;
   }
+  .navigation_btn {
+    float:left;
+  }
   /* .container:hover .destination{
     display:none;
   } */
