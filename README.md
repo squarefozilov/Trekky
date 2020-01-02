@@ -1,6 +1,6 @@
-# Quiggly
+# Trekky
 
-Quiggly is a crime location app that identifies recent crime data and tracks patterns to better inform those that travel around the city.
+Trekky is a crime location app that identifies recent crime data and tracks patterns to better inform those that travel around the city.
 
 ## Technologies 
 * Javascript
