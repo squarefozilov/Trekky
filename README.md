@@ -25,4 +25,4 @@ For example;
 * The user can track trends of each crime in a given area of the city by clicking on a given area or indicating on the destination input area and pressing enter.
 * The user can get access to schools graduation rates, hospitals ratings, tax rates, or average rent within a given area.
 * The user can have their data visualized on a graph.
-test
+
